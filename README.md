@@ -1,6 +1,8 @@
 # P13sem
 
 ## Giovanna Ronqui e Thais Rodrigues
+
+Projeto em desenvolvimento ⚠️
 ____________________________________
 
 Diario de bordo:
