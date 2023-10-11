@@ -28,12 +28,12 @@
 	<header class="p-3 bg-light text-dark align-items-center">
 		<div class="container">
 			<div class="d-flex flex-wrap align-items-center justify-content-center">
-				<a href="index.html" class="align-items-center text-decoration-none">
+				<a href="#" class="align-items-center text-decoration-none">
 					<img src="./images/logo.png" height="40" class="d-inline-block align-top" alt="">
 				</a>
 
 				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-				  <li><a href="index.html" class="nav-link px-2 text-secondary">Home</a></li>
+				  <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
 				  <li><a href="#" class="nav-link px-2 text-dark">Sobre</a></li>
 				  <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle text-dark px-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,14 +70,13 @@
 	  </ol>
 	  <div class="carousel-inner">
 		<div class="carousel-item active">
-		  <!-- <img class="d-block w-100 " src="..." alt="First slide">-->
-		  <svg width="100%" height="500px" alt="First slide"> </svg>
+		   <img class="d-block w-100 " src="./images/3.png" alt="First slide">
 		</div>
 		<div class="carousel-item">
-		  <img class="d-block w-100" src="..." alt="Second slide">
+		  <img class="d-block w-100" src="./images/4.png" alt="Second slide">
 		</div>
 		<div class="carousel-item">
-		  <img class="d-block w-100" src="..." alt="Third slide">
+		  <img class="d-block w-100" src="./images/5.png" alt="Third slide">
 		</div>
 	  </div>
 	  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -154,10 +153,10 @@
 		<div class="container">
 			<div class="row row-cols-sm-1 row-cols-md-2">
 				<div class="col-6">
-					<svg width="100%" height="200px"></svg>
+                    <img src="./images/1.png" width="100%" height="200px">
 				</div>
 				<div class="col-6">
-					<svg width="100%" height="200px"></svg>
+                    <img src="./images/2.png" width="100%" height="200px">
 				</div>
 			</div>
 		</div>
