@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdutoController;
+
+Route::resource('produtos', ProdutoController::class);
 
 Route::get('/', function () {
-    return view('home');
-    //return view('home', ['produtos' => Produto::all()]);
+    return view('home', ['produtos' => Produto::all()]);
 });

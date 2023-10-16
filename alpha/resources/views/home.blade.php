@@ -94,56 +94,18 @@
 		<div class="container">
 		  <h1>Promoções</h1>
 		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
+			@foreach ($produtos as produto)
 			<div class="col">
 			  <div class="card shadow-sm">
 				<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
 
 				<div class="card-body">
-					<p class="card-text">Nome</p>
-					<p class="card-text">Preço</p>
+					<p class="card-text">{{$produto->PRODUTO_NOME}}</p>
+					<p class="card-text">{{$produto->PRODUTO_PRECO}}</p>
 				</div>
 			  </div>
 			</div>
-			<div class="col">
-			  <div class="card shadow-sm">
-				<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
-
-				<div class="card-body">
-					<p class="card-text">Nome</p>
-					<p class="card-text">Preço</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col">
-			  <div class="card shadow-sm">
-				<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
-
-				<div class="card-body">
-					<p class="card-text">Nome</p>
-					<p class="card-text">Preço</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col">
-			  <div class="card shadow-sm">
-				<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
-
-				<div class="card-body">
-					<p class="card-text">Nome</p>
-					<p class="card-text">Preço</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col">
-			  <div class="card shadow-sm">
-				<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
-
-				<div class="card-body">
-					<p class="card-text">Nome</p>
-					<p class="card-text">Preço</p>
-				</div>
-			  </div>
-			</div>
+			@endforeach
 		  </div>
 		</div>
 	  </div>
