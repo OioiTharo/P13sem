@@ -1,6 +1,6 @@
 # P13sem
 
-## Giovanna Ronqui e Thais Rodrigues
+## Giovanna Ronqui, Lucas e Thais Rodrigues
 
 Projeto em desenvolvimento ⚠️
 ____________________________________
@@ -14,4 +14,5 @@ Diario de bordo:
 | 28/09 | Criamos o html do login                       |
 | 05/10 | Criamos os banners                            |
 | 12/10 | Colocamos a home no larevel e add os banners  |
+| 19/10 | Criamos o Produto no laravel e add na home    |
 
