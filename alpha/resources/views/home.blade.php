@@ -95,7 +95,7 @@
 		  <h1>Promoções</h1>
 		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
 			@foreach ($produtos as $produto)
-			<div class="col">
+			<div class="p-3 col">
 			  <div class="card shadow-sm">
 				<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
 

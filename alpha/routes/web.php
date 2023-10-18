@@ -5,7 +5,4 @@ use App\Http\Controllers\ProdutoController;
 
 Route::resource('produtos', ProdutoController::class);
 
-Route::get('/', function () {
-    //return view('home');
-    return view('home', ['produtos' => Produto::all()]);
-});
+Route::get('/', [ProdutoController::class, 'home']);

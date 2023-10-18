@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
+    public function home(){
+        return view('home', ['produtos' => Produto::All()]);
+    }
     public function index()
     {
         return view('produtos.index', ['produtos' => Produto::All()]);
