@@ -11,13 +11,17 @@ class CategoriaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function home(){
-        return view('home', ['categorias' => Categoria::All()]);
-    }
+    public function getCategorias()
+    {
+        // Aqui, você pode obter as categorias da maneira desejada.
+        $categorias = Categoria::all();
 
+        return $categorias;
+    }
+    
     public function index()
     {
-        //
+        return view('categorias.index', ['categorias' => Categoria::All()]);
     }
 
 
