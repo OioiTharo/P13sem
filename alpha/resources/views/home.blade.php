@@ -14,9 +14,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
 		<!-- Icons google -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <!--Bootstrap: -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<!--Bootstrap: -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <style>
+        
+		<style>
             body{font-family: 'Electrolize', sans-serif; margin: 0;}
 			.material-icons{width: 40px}
 			svg{ background-color: #472468;}
@@ -98,7 +103,7 @@
 				@if ($index>=1 && $index<=5)
 					<div class="p-3 col">
 					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
+						<img src="{{ $produtoImagens[$index]->IMAGEM_URL }}" width="100%" height="200">
 						<div class="card-body">
 							<p class="card-text">{{$produto->PRODUTO_NOME}}</p>
 							<p class="card-text">{{$produto->PRODUTO_PRECO}}</p>
@@ -133,7 +138,7 @@
 				@if ($index>=6 && $index<=10)
 					<div class="p-3 col">
 					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
+					<img src="{{ $produtoImagens[$index]->IMAGEM_URL }}" width="100%" height="200">
 						<div class="card-body">
 							<p class="card-text">{{$produto->PRODUTO_NOME}}</p>
 							<p class="card-text">{{$produto->PRODUTO_PRECO}}</p>

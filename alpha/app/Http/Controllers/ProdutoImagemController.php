@@ -11,9 +11,14 @@ class ProdutoImagemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function home(){
-        return view('home', ['produtoimagens' => ProdutoImagem::All()]);
+    public function getProdutoImagens()
+    {
+        // Aqui, você pode obter as categorias da maneira desejada.
+        $produtoImagens = ProdutoImagem::all();
+
+        return $produtoImagens;
     }
+    
     public function index()
     {
         //
