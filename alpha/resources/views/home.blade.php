@@ -14,12 +14,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
 		<!-- Icons google -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!--Bootstrap: -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
  		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
  		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<!--Bootstrap: -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		
         
 		<style>
             body{font-family: 'Electrolize', sans-serif; margin: 0;}
@@ -33,13 +33,13 @@
 	<header class="p-3 bg-light text-dark align-items-center">
 		<div class="container">
 			<div class="d-flex flex-wrap align-items-center justify-content-center">
-				<a href="#" class="align-items-center text-decoration-none">
+				<a href="{{ url('/') }}" class="align-items-center text-decoration-none">
 					<img src="./images/logo.png" height="40" class="d-inline-block align-top" alt="">
 				</a>
 
 				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-				  <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-				  <li><a href="#" class="nav-link px-2 text-dark">Sobre</a></li>
+				  <li><a href="{{ url('/') }}" class="nav-link px-2 text-secondary">Home</a></li>
+				  <li><a href="{{ url('/about') }}" class="nav-link px-2 text-dark">Sobre</a></li>
 				  <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle text-dark px-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					  Categorias
@@ -59,9 +59,9 @@
 				</form>
 
 				<div class="text-end">
-				  <a href="" class="text-decoration-none text-dark "><i class="material-icons">shopping_cart</i></a>
+				  <a href="{{ url('/carrinho') }}" class="text-decoration-none text-dark "><i class="material-icons">shopping_cart</i></a>
 				  <a href="" class="text-decoration-none text-dark "><i class="material-icons">accessibility</i></a>
-				  <a href="login.html" class="text-decoration-none text-dark "><i class="material-icons">account_circle</i></a>
+				  <a href="{{ url('/login') }}" class="text-decoration-none text-dark "><i class="material-icons">account_circle</i></a>
 				</div>
 			</div>
 		</div>
