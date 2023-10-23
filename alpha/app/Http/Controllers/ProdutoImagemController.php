@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produto;
+use App\Models\ProdutoImagem;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ProdutoController extends Controller
+class ProdutoImagemController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function home(){
-        return view('home', ['produtos' => Produto::All()]);
+        return view('home', ['produtoimagens' => ProdutoImagem::All()]);
     }
-    
     public function index()
     {
-        return view('produtos.index', ['produtos' => Produto::All()]);
+        //
     }
 
     /**
@@ -36,7 +38,7 @@ class ProdutoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Produto $produto)
+    public function show(ProdutoImagem $produtoImagem)
     {
         //
     }
@@ -44,7 +46,7 @@ class ProdutoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Produto $produto)
+    public function edit(ProdutoImagem $produtoImagem)
     {
         //
     }
@@ -52,7 +54,7 @@ class ProdutoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Produto $produto)
+    public function update(Request $request, ProdutoImagem $produtoImagem)
     {
         //
     }
@@ -60,7 +62,7 @@ class ProdutoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Produto $produto)
+    public function destroy(ProdutoImagem $produtoImagem)
     {
         //
     }

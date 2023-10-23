@@ -94,17 +94,18 @@
 		<div class="container">
 		  <h1>Promoções</h1>
 		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
-			@foreach ($produtos as $produto)
-			<div class="p-3 col">
-			  <div class="card shadow-sm">
-				<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
-
-				<div class="card-body">
-					<p class="card-text">{{$produto->PRODUTO_NOME}}</p>
-					<p class="card-text">{{$produto->PRODUTO_PRECO}}</p>
-				</div>
-			  </div>
-			</div>
+			@foreach ($produtos as $index => $produto)
+				@if ($index>=1 && $index<=5)
+					<div class="p-3 col">
+					<div class="card shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
+						<div class="card-body">
+							<p class="card-text">{{$produto->PRODUTO_NOME}}</p>
+							<p class="card-text">{{$produto->PRODUTO_PRECO}}</p>
+						</div>
+					</div>
+					</div>
+				@endif
 			@endforeach
 		  </div>
 		</div>
@@ -126,77 +127,31 @@
 	<!-- mais pesquisados -->
 	<div class="album py-3 bg-light">
 		<div class="container">
-		  <h1>Mais pesquisados</h1>
+		  <h1>Promoções</h1>
 		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
-			<div class="col">
-			  <div class="card shadow-sm">
-				<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
-
-				<div class="card-body">
-					<p class="card-text">Nome</p>
-					<p class="card-text">Preço</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col">
-			  <div class="card shadow-sm">
-				<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
-
-				<div class="card-body">
-					<p class="card-text">Nome</p>
-					<p class="card-text">Preço</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col">
-			  <div class="card shadow-sm">
-				<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
-
-				<div class="card-body">
-					<p class="card-text">Nome</p>
-					<p class="card-text">Preço</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col">
-			  <div class="card shadow-sm">
-				<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
-
-				<div class="card-body">
-					<p class="card-text">Nome</p>
-					<p class="card-text">Preço</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col">
-			  <div class="card shadow-sm">
-				<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
-
-				<div class="card-body">
-					<p class="card-text">Nome</p>
-					<p class="card-text">Preço</p>
-				</div>
-			  </div>
-			</div>
+			@foreach ($produtos as $index => $produto)
+				@if ($index>=6 && $index<=10)
+					<div class="p-3 col">
+					<div class="card shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%" height="200"><rect width="100%" height="100%" fill="#FFBD59"/></svg>
+						<div class="card-body">
+							<p class="card-text">{{$produto->PRODUTO_NOME}}</p>
+							<p class="card-text">{{$produto->PRODUTO_PRECO}}</p>
+						</div>
+					</div>
+					</div>
+				@endif
+			@endforeach
 		  </div>
 		</div>
-	  </div>
+	</div>
 	<!-- categorias -->
 	<div class=" py-3 bg-light">
 		<div class="container">
 			<div class="row row-cols-sm-4 row-cols-md-6 text-center align-middle">
-				<div class="col border bg-white categ"><a href="#" class="text-decoration-none text-dark">Categoria 1</a></div>
-				<div class="col border categ"><a href="#" class="text-decoration-none text-dark">Categoria 2</a></div>
-				<div class="col border bg-white categ"><a href="#" class="text-decoration-none text-dark">Categoria 3</a></div>
-				<div class="col border categ"><a href="#" class="text-decoration-none text-dark">Categoria 4</a></div>
-				<div class="col border bg-white categ"><a href="#" class="text-decoration-none text-dark">Categoria 5</a></div>
-				<div class="col border categ"><a href="#" class="text-decoration-none text-dark">Categoria 6</a></div>
-				<div class="col border bg-white categ"><a href="#" class="text-decoration-none text-dark">Categoria 7</a></div>
-				<div class="col border categ"><a href="#" class="text-decoration-none text-dark">Categoria 8</a></div>
-				<div class="col border bg-white categ"><a href="#" class="text-decoration-none text-dark">Categoria 9</a></div>
-				<div class="col border categ"><a href="#" class="text-decoration-none text-dark">Categoria 10</a></div>
-				<div class="col border bg-white categ"><a href="#" class="text-decoration-none text-dark">Categoria 11</a></div>
-				<div class="col border categ"><a href="#" class="text-decoration-none text-dark">Categoria 12</a></div>
+				@foreach ($categorias as $categoria)
+				<div class="col border bg-white categ"><a href="#" class="text-decoration-none text-dark">{{$categoria->CATEGORIA_NOME}}</a></div>
+				@endforeach
 			</div>
 		</div>
 	</div>
