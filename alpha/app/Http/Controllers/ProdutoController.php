@@ -8,13 +8,6 @@ use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
-    public function getProdutos()
-    {
-        // Aqui, você pode obter os produtos da maneira desejada.
-        $produtos = Produto::all();
-
-        return $produtos;
-    }
 
     public function index()
     {

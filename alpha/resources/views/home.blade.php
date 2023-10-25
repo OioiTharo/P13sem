@@ -100,10 +100,10 @@
 		  <h1>Promoções</h1>
 		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
 			@foreach ($produtos as $index => $produto)
-				@if ($index>=1 && $index<=5)
+				@if ($index>=0 && $index<=4)
 					<div class="p-3 col">
 					<div class="card shadow-sm">
-						<img src="{{ $produtoImagens[$index]->IMAGEM_URL }}" width="100%" height="200">
+						<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="200">
 						<div class="card-body">
 							<p class="card-text">{{$produto->PRODUTO_NOME}}</p>
 							<p class="card-text">{{$produto->PRODUTO_PRECO}}</p>
@@ -135,10 +135,10 @@
 		  <h1>Promoções</h1>
 		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
 			@foreach ($produtos as $index => $produto)
-				@if ($index>=6 && $index<=10)
+				@if ($index>=5 && $index<=9)
 					<div class="p-3 col">
 					<div class="card shadow-sm">
-					<img src="{{ $produtoImagens[$index]->IMAGEM_URL }}" width="100%" height="200">
+					<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="200">
 						<div class="card-body">
 							<p class="card-text">{{$produto->PRODUTO_NOME}}</p>
 							<p class="card-text">{{$produto->PRODUTO_PRECO}}</p>
