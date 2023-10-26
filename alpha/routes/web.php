@@ -25,14 +25,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::resource('produtos', ProdutoController::class);
-    Route::resource('categorias', CategoriaController::class);
-
-
+//rotas para o home
     Route::get('/', [ProdutoController::class, 'home'], );
     Route::get('/', [CategoriaController::class, 'home']);
     Route::get('/', [HomeController::class, 'home']);
+    
+    Route::resource('produtos', ProdutoController::class);
+
+Route::middleware('auth')->group(function () {
+
+    Route::resource('categorias', CategoriaController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

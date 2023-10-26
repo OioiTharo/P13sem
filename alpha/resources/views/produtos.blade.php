@@ -55,41 +55,14 @@
 			</div>
 		</div>
 	</header>
-	<!-- carousel -->
-	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-	  <ol class="carousel-indicators">
-		<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-		<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-		<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-	  </ol>
-	  <div class="carousel-inner">
-		<div class="carousel-item active">
-		   <img class="d-block w-100 " src="./images/3.png" alt="First slide">
-		</div>
-		<div class="carousel-item">
-		  <img class="d-block w-100" src="./images/4.png" alt="Second slide">
-		</div>
-		<div class="carousel-item">
-		  <img class="d-block w-100" src="./images/5.png" alt="Third slide">
-		</div>
-	  </div>
-	  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		<span class="sr-only">Previous</span>
-	  </a>
-	  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-		<span class="carousel-control-next-icon" aria-hidden="true"></span>
-		<span class="sr-only">Next</span>
-	  </a>
 	</div>
-	<!-- promoções -->
-	<main>
-	  <div class="album py-3 bg-light">
+	<!-- produtos -->
+	<div class="album py-3 bg-light">
 		<div class="container">
 		  <h1>Promoções</h1>
-		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
 			@foreach ($produtos as $index => $produto)
-				@if ($index>=0 && $index<=4)
+				@if ($index>=0 && $index<=10)
 					<div class="p-3 col">
 					<div class="card shadow-sm">
 						<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="200">
@@ -102,51 +75,6 @@
 				@endif
 			@endforeach
 		  </div>
-		</div>
-	  </div>
-	</main>
-	<!-- banners -->
-	<div class="py-3 bg-light">
-		<div class="container">
-			<div class="row row-cols-sm-1 row-cols-md-2">
-				<div class="col-6">
-                    <img src="./images/1.png" width="100%" height="200px">
-				</div>
-				<div class="col-6">
-                    <img src="./images/2.png" width="100%" height="200px">
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- mais pesquisados -->
-	<div class="album py-3 bg-light">
-		<div class="container">
-		  <h1>Promoções</h1>
-		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
-			@foreach ($produtos as $index => $produto)
-				@if ($index>=5 && $index<=9)
-					<div class="p-3 col">
-					<div class="card shadow-sm">
-					<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="200">
-						<div class="card-body">
-							<p class="card-text">{{$produto->PRODUTO_NOME}}</p>
-							<p class="card-text">{{$produto->PRODUTO_PRECO}}</p>
-						</div>
-					</div>
-					</div>
-				@endif
-			@endforeach
-		  </div>
-		</div>
-	</div>
-	<!-- categorias -->
-	<div class=" py-3 bg-light">
-		<div class="container">
-			<div class="row row-cols-sm-4 row-cols-md-6 text-center align-middle">
-				@foreach ($categorias as $categoria)
-				<div class="col border bg-white categ"><a href="#" class="text-decoration-none text-dark">{{$categoria->CATEGORIA_NOME}}</a></div>
-				@endforeach
-			</div>
 		</div>
 	</div>
 	<!-- footer -->

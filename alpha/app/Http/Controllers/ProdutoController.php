@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
+use App\Models\Categoria;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CategoriaController;
 
 class ProdutoController extends Controller
 {
 
     public function index()
     {
-        return view('produtos.index', ['produtos' => Produto::All()]);
+        $produtos = Produto::all();
+        $categorias = Categoria::all();
+        return view('produtos', ['produtos' =>  $produtos, 'categorias' => $categorias]);
     }
 
     /**

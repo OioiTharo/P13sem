@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\ProdutoImagemController;
+
 class HomeController extends Controller
 {
     public function home()
