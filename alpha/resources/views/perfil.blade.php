@@ -75,7 +75,8 @@
 				<div class="col"><p><strong>Cidade:</strong> <span id="endereco">São Paulo</span></p></div>
 				<div class="col"><p><strong>Estado:</strong> <span id="endereco">SP</span></p></div>
 			</div>
-			<button type="button" class="btn btn-outline-dark">Editar dados</button>
+			<button type="button" class="btn btn-dark" data-toggle="modal" data-target=".bd-example-modal-lg">Editar Dados</button>
+
         </div>
 		<br>
         <div class="profile p-3">
@@ -85,13 +86,112 @@
             </ul>
         </div>
     </div>
-    <script>
-	
-	
+	<!--modal -->
+
+	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<form class="p-5">
+					<div class="text-center mb-4">
+						<h1 class="font-weight-normal">Edite</h1>
+					</div>
+					<div class="form-row">
+						<div class="col">
+						<input type="text" class="form-control" placeholder="Nome Completo" required>
+						</div>
+						<div class="col">
+						<input type="text" class="form-control" placeholder="CPF" required>
+						</div>
+					</div>
+					<div class="pt-4 pr-1 pl-1 form-row">
+						<input type="email" id="inputEmail" class="form-control" placeholder="Endereço de email" required autofocus>
+					</div>
+					<div class="pt-4 form-row">
+						<div class="col">
+						<input type="password" class="form-control" placeholder="Senha" required>
+						</div>
+						<div class="col">
+						<input type="password" class="form-control" placeholder="Repita a senha" required>
+						</div>
+					</div>
+					<hr>
+					<div class="text-center mb-4">
+						<p class="font-weight-normal">Dados para entrega:</p>
+					</div>
+					<div class="p-1 form-row">
+						<input type="text" class="form-control" placeholder="Endereço" id="endereco" required>
+					</div>
+					<div class="pt-4 form-row">
+						<div class="col">
+							<select class="form-select-sm form-control" required>
+							<option selected>Logradouro</option>
+							<option value="1">Rua</option>
+							<option value="2">Avenida</option>
+							<option value="3">Praça</option>
+							<option value="3">Viaduto</option>
+							<option value="3">Outros</option>
+							</select>
+						</div>
+						<div class="col">
+							<input type="text" class="form-control" placeholder="Número" required id="numero">
+						</div>
+						<div class="col-6">
+							<input type="text" class="form-control" placeholder="Complemento" id="complemento">
+						</div>
+					</div>
+					<div class="pt-4 form-row">
+						<div class="col">
+							<input type="text" class="form-control" placeholder="CEP" id="cep">
+						</div>
+						<div class="col">
+							<input type="text" class="form-control" placeholder="Cidade" id="cidade">
+						</div>
+						<div class="col-3">
+							<select class="form-select-sm form-control" required id="uf">
+								<option selected>UF</option>
+								<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espírito Santo</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="RS">Rio Grande do Sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select>
+						</div>
+					</div>
+					<div class="pt-1 checkbox mb-3">
+						<label>
+						<input type="checkbox" value="lembrar de mim"> Lembrar de mim
+						</label>
+					</div>
+					<button class="btn btn-lg btn-dark btn-block" type="submit">Salvar</button>
+				</form>
+			</div>
+  		</div>
+	</div>
+	<script>
+		$('#meuModal').modal(options);
 	</script>
-
-
-
 	<!-- footer -->
 	<footer class="text-center text-lg-start text-muted fixed-bottom"	style="background-color: #f5f5f5;">
 	  <!-- Section: Links  -->

@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/perfil', function () {
+    return view('perfil');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
