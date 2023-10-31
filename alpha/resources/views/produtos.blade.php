@@ -50,7 +50,7 @@
 				<div class="text-end">
 				  <a href="{{ url('/carrinho') }}" class="text-decoration-none text-dark "><i class="material-icons">shopping_cart</i></a>
 				  <a href="" class="text-decoration-none text-dark "><i class="material-icons">accessibility</i></a>
-				  <a href="{{ url('/login') }}" class="text-decoration-none text-dark "><i class="material-icons">account_circle</i></a>
+				  <a href="{{ url('/perfil') }}" class="text-decoration-none text-dark "><i class="material-icons">account_circle</i></a>
 				</div>
 			</div>
 		</div>
@@ -61,18 +61,16 @@
 		<div class="container">
 		  <h1>Promoções</h1>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
-			@foreach ($produtos as $index => $produto)
-				@if ($index>=0 && $index<=10)
+			@foreach ($produtos as $produto)
 					<div class="p-3 col">
 					<div class="card shadow-sm">
-						<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="200">
+						<img src="{{ $produto->IMAGEM_URL }}" width="100%" height="200">
 						<div class="card-body">
 							<p class="card-text">{{$produto->PRODUTO_NOME}}</p>
-							<p class="card-text">{{$produto->PRODUTO_PRECO}}</p>
+							<p class="card-text"><strong>{{$produto->PRODUTO_PRECO}}</strong></p>
 						</div>
 					</div>
 					</div>
-				@endif
 			@endforeach
 		  </div>
 		</div>

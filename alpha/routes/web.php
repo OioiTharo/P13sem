@@ -31,10 +31,10 @@ Route::get('/dashboard', function () {
     Route::get('/', [HomeController::class, 'home']);
     
     Route::resource('produtos', ProdutoController::class);
+    Route::resource('categorias', CategoriaController::class);
 
 Route::middleware('auth')->group(function () {
 
-    Route::resource('categorias', CategoriaController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

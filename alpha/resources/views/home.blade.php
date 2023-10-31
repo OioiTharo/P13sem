@@ -50,7 +50,7 @@
 				<div class="text-end">
 				  <a href="{{ url('/carrinho') }}" class="text-decoration-none text-dark "><i class="material-icons">shopping_cart</i></a>
 				  <a href="" class="text-decoration-none text-dark "><i class="material-icons">accessibility</i></a>
-				  <a href="{{ url('/login') }}" class="text-decoration-none text-dark "><i class="material-icons">account_circle</i></a>
+				  <a href="{{ url('/perfil') }}" class="text-decoration-none text-dark "><i class="material-icons">account_circle</i></a>
 				</div>
 			</div>
 		</div>
@@ -95,7 +95,7 @@
 						<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="200">
 						<div class="card-body">
 							<p class="card-text">{{$produto->PRODUTO_NOME}}</p>
-							<p class="card-text">{{$produto->PRODUTO_PRECO}}</p>
+							<p class="card-text"><strong>{{$produto->PRODUTO_PRECO}}</strong></p>
 						</div>
 					</div>
 					</div>
@@ -121,7 +121,7 @@
 	<!-- mais pesquisados -->
 	<div class="album py-3 bg-light">
 		<div class="container">
-		  <h1>Promoções</h1>
+		  <h1>Mais pesquisados</h1>
 		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
 			@foreach ($produtos as $index => $produto)
 				@if ($index>=5 && $index<=9)
@@ -130,7 +130,7 @@
 					<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="200">
 						<div class="card-body">
 							<p class="card-text">{{$produto->PRODUTO_NOME}}</p>
-							<p class="card-text">{{$produto->PRODUTO_PRECO}}</p>
+							<p class="card-text"><strong>{{$produto->PRODUTO_PRECO}}</strong></p>
 						</div>
 					</div>
 					</div>
@@ -142,6 +142,7 @@
 	<!-- categorias -->
 	<div class=" py-3 bg-light">
 		<div class="container">
+		<h1>Categorias</h1>
 			<div class="row row-cols-sm-4 row-cols-md-6 text-center align-middle">
 				@foreach ($categorias as $categoria)
 				<div class="col border bg-white categ"><a href="#" class="text-decoration-none text-dark">{{$categoria->CATEGORIA_NOME}}</a></div>
@@ -215,5 +216,6 @@
 	  </section>
 	  <!-- Section: Links  -->
 	</footer>
+	
 </body>
 </html>
