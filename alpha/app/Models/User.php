@@ -14,5 +14,10 @@ class User extends Authenticatable
 
     protected $fillable = ['USUARIO_NOME',  'USUARIO_EMAIL', 'USUARIO_SENHA', 'USUARIO_CPF'];
     protected $table = "USUARIO";
+    protected $primaryKey = "USUARIO_ID";
+    public $timestamps = false;
 
+    public function Enderecos(){
+        return $this->hasMany(Endereco::class, 'USUARIO_ID','USUARIO_ID');
+    }
 }

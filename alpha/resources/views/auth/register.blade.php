@@ -75,7 +75,7 @@
 				  <input type="password" class="form-control" placeholder="Senha" name="USUARIO_SENHA" required>
 				</div>
 				<div class="col">
-				  <input type="password" class="form-control" placeholder="Repita a senha" name="USUARIO_SENHA"  required>
+				  <input type="password" class="form-control" placeholder="Repita a senha"   >
 				</div>
 			</div>
 	

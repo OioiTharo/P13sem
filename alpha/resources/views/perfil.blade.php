@@ -60,23 +60,26 @@
 		<h1>Perfil do Usuário</h1>
         <div class="profile p-3">
             <h2>Dados do Usuário</h2>
-            <p><strong>Nome:</strong> <span id="name">Nome do Usuário</span></p>
-            <p><strong>Número:</strong> <span id="numero">11 2345678</span></p>
-            <p><strong>Email:</strong> <span id="email">email@example.com</span></p>
+            <p><strong>Nome:</strong> <span id="name">{{Auth::user()->USUARIO_NOME}}</span></p>
+            <p><strong>CPF:</strong> <span id="numero">{{Auth::user()->USUARIO_CPF}}</span></p>
+            <p><strong>Email:</strong> <span id="email">{{Auth::user()->USUARIO_EMAIL}}</span></p>
 			<hr>
 			<h3>Endereços:</h3>
-			<div class="row">
-				<div class="col"><p><strong>Logradoura:</strong> <span id="endereco">Avenida Brasil</span></p></div>
-				<div class="col"><p><strong>Numero:</strong> <span id="endereco">12</span></p></div>
-				<div class="col"><p><strong>CEP:</strong> <span id="endereco">09877-059</span></p></div>
-			</div>
-			<div class="row">
-				<div class="col"><p><strong>Complemento:</strong> <span id="endereco">Casa 1</span></p></div>
-				<div class="col"><p><strong>Cidade:</strong> <span id="endereco">São Paulo</span></p></div>
-				<div class="col"><p><strong>Estado:</strong> <span id="endereco">SP</span></p></div>
-			</div>
-			<button type="button" class="btn btn-dark" data-toggle="modal" data-target=".bd-example-modal-lg">Editar Dados</button>
-
+			@foreach (Auth::user()->Enderecos as $endereco)
+				<div class="row">
+					<div class="col"><p><strong>Logradouro:</strong> <span id="endereco">{{ $endereco->ENDERECO_NOME }}</span></p></div>
+					<div class="col"><p><strong>Numero:</strong> <span id="endereco">{{ $endereco->ENDERECO_NUMERO }}</span></p></div>
+					<div class="col"><p><strong>CEP:</strong> <span id="endereco">{{ $endereco->ENDERECO_CEP}}</span></p></div>
+				</div>
+				<div class="row">
+					<div class="col"><p><strong>Complemento:</strong> <span id="endereco">{{ $endereco->ENDERECO_COMPLEMENTO }}</span></p></div>
+					<div class="col"><p><strong>Cidade:</strong> <span id="endereco">{{ $endereco->ENDERECO_CIDADE }}</span></p></div>
+					<div class="col"><p><strong>Estado:</strong> <span id="endereco">{{ $endereco->ENDERECO_ESTADO }}</span></p></div>
+				</div>
+				<hr>
+			@endforeach
+				<button type="button" class="btn btn-dark" data-toggle="modal" data-target=".bd-example-modal-lg">Adicionar</button>
+						
         </div>
 		<br>
         <div class="profile p-3">
@@ -92,29 +95,6 @@
   		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<form class="p-5">
-					<div class="text-center mb-4">
-						<h1 class="font-weight-normal">Edite</h1>
-					</div>
-					<div class="form-row">
-						<div class="col">
-						<input type="text" class="form-control" placeholder="Nome Completo" required>
-						</div>
-						<div class="col">
-						<input type="text" class="form-control" placeholder="CPF" required>
-						</div>
-					</div>
-					<div class="pt-4 pr-1 pl-1 form-row">
-						<input type="email" id="inputEmail" class="form-control" placeholder="Endereço de email" required autofocus>
-					</div>
-					<div class="pt-4 form-row">
-						<div class="col">
-						<input type="password" class="form-control" placeholder="Senha" required>
-						</div>
-						<div class="col">
-						<input type="password" class="form-control" placeholder="Repita a senha" required>
-						</div>
-					</div>
-					<hr>
 					<div class="text-center mb-4">
 						<p class="font-weight-normal">Dados para entrega:</p>
 					</div>
@@ -193,7 +173,7 @@
 		$('#meuModal').modal(options);
 	</script>
 	<!-- footer -->
-	<footer class="text-center text-lg-start text-muted fixed-bottom"	style="background-color: #f5f5f5;">
+	<footer class="text-center text-lg-start text-muted"	style="background-color: #f5f5f5;">
 	  <!-- Section: Links  -->
 	  <section class="">
 		<div class="container text-center text-md-start pt-4 pb-4">

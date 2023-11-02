@@ -21,25 +21,22 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/perfil', function () {
-    return view('perfil');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 //rotas para o home
-    Route::get('/', [ProdutoController::class, 'home'], );
-    Route::get('/', [CategoriaController::class, 'home']);
-    Route::get('/', [HomeController::class, 'home']);
-    
-    Route::resource('produtos', ProdutoController::class);
-    Route::resource('categorias', CategoriaController::class);
+Route::get('/', [HomeController::class, 'home']);
+Route::resource('produtos', ProdutoController::class);
+Route::resource('categorias', CategoriaController::class);
 
 Route::middleware('auth')->group(function () {
+    
+    Route::get('/perfil', function () {
+        return view('perfil');
+    });
 
-
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect ("/");
+    });
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

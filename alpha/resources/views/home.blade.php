@@ -82,6 +82,16 @@
 		<span class="sr-only">Next</span>
 	  </a>
 	</div>
+	<!-- categorias -->
+	<div class=" py-3 bg-light">
+		<div class="container">
+			<div class="row row-cols-sm-4 row-cols-md-6 text-center align-middle">
+				@foreach ($categorias as $categoria)
+				<div class="col border bg-white categ"><a href="#" class="text-decoration-none text-dark">{{$categoria->CATEGORIA_NOME}}</a></div>
+				@endforeach
+			</div>
+		</div>
+	</div>
 	<!-- promoções -->
 	<main>
 	  <div class="album py-3 bg-light">
@@ -139,17 +149,7 @@
 		  </div>
 		</div>
 	</div>
-	<!-- categorias -->
-	<div class=" py-3 bg-light">
-		<div class="container">
-		<h1>Categorias</h1>
-			<div class="row row-cols-sm-4 row-cols-md-6 text-center align-middle">
-				@foreach ($categorias as $categoria)
-				<div class="col border bg-white categ"><a href="#" class="text-decoration-none text-dark">{{$categoria->CATEGORIA_NOME}}</a></div>
-				@endforeach
-			</div>
-		</div>
-	</div>
+	
 	<!-- footer -->
 	<footer class="text-center text-lg-start text-muted" style="background-color: #f5f5f5;">
 	  <!-- Section: Links  -->
