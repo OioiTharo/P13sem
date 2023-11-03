@@ -20,4 +20,7 @@ class User extends Authenticatable
     public function Enderecos(){
         return $this->hasMany(Endereco::class, 'USUARIO_ID','USUARIO_ID');
     }
+    public function Carrinho(){
+        return $this->hasMany(ProdutoImagem::class, 'USUARIO_ID','USUARIO_ID');
+    }
 }

@@ -55,24 +55,23 @@
 			</div>
 		</div>
 	</header>
-	</div>
 	<!-- produtos -->
 	<div class="album py-3 bg-light">
 		<div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
 			@foreach ($produtos as $produto)
 					<div class="p-3 col">
-					<div class="card shadow-sm">
-						@if($produto->ProdutoImagens->count() > 0)
-						<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="200">
-						@else
-						<img src="" width="100%" height="200">
-						@endif
-						<div class="card-body">
-							<p class="card-text">{{$produto->PRODUTO_NOME}}</p>
-							<p class="card-text"><strong>{{$produto->PRODUTO_PRECO}}</strong></p>
+						<div class="card shadow-sm">
+							@if($produto->ProdutoImagens->count() > 0)
+							<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="200">
+							@else
+							<img src="" width="100%" height="200">
+							@endif
+							<div class="card-body">
+								<a class="card-text" href="{{route('produtos.show', $produto->PRODUTO_ID)}}">{{$produto->PRODUTO_NOME}}</a>
+								<p class="card-text"><strong>{{$produto->PRODUTO_PRECO}}</strong></p>
+							</div>
 						</div>
-					</div>
 					</div>
 			@endforeach
 		  </div>

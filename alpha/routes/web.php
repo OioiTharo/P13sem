@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\EnderecoController;
+use App\Http\Controllers\CarrinhoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,10 +22,13 @@ Route::get('/', function () {
     return view('home');
 });
 
-//rotas para o home
+Route::post('/endereco/store','EnderecoController@store')->name('endereco.store');
+Route::post('/carrinho/store','CarrinhoController@store')->name('carrinho.store');
+
+//rotas
 Route::get('/', [HomeController::class, 'home']);
-Route::resource('produtos', ProdutoController::class);
-Route::resource('categorias', CategoriaController::class);
+Route::resource('/produtos', ProdutoController::class);
+Route::resource('/categorias', CategoriaController::class);
 
 Route::middleware('auth')->group(function () {
     
@@ -36,7 +40,13 @@ Route::middleware('auth')->group(function () {
         Auth::logout();
         return redirect ("/");
     });
-    
+
+    Route::resource('/carrinho', CarrinhoController::class);
+
+    Route::get('/checkout', function () {
+        return view('checkout');
+    });
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

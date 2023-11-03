@@ -26,6 +26,9 @@
 			.categ{ padding: 5px;}
 			.profile{background-color: #DADADA; padding: 5px; border-radius: 8px;}
         </style>
+		<script>
+			$('#meuModal').modal(options);
+		</script>
     </head>
 <body>
     <!-- header -->
@@ -94,7 +97,8 @@
 	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
-				<form class="p-5">
+				<form class="p-5" method="POST" action="{{route('endereco.store')}}">
+					@csrf
 					<div class="text-center mb-4">
 						<p class="font-weight-normal">Dados para entrega:</p>
 					</div>
@@ -169,9 +173,7 @@
 			</div>
   		</div>
 	</div>
-	<script>
-		$('#meuModal').modal(options);
-	</script>
+	
 	<!-- footer -->
 	<footer class="text-center text-lg-start text-muted"	style="background-color: #f5f5f5;">
 	  <!-- Section: Links  -->

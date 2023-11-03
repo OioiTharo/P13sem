@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Endereco;
-use Illuminate\Http\Request;
+use App\Models\Carrinho;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class EnderecoController extends Controller
+class CarrinhoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class EnderecoController extends Controller
      */
     public function create()
     {
-        return view('perfil');
+        //
     }
 
     /**
@@ -29,14 +29,14 @@ class EnderecoController extends Controller
      */
     public function store(Request $request)
     {
-        Endereco::create($request->all());
-        return redirect(route('perfil'));
+        Carrinho::create($request->all());
+        return redirect(route('carrinho'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Endereco $endereco)
+    public function show(Carrinho $carrinho)
     {
         //
     }
@@ -44,24 +44,23 @@ class EnderecoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Endereco $endereco)
+    public function edit(Carrinho $carrinho)
     {
-        
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Endereco $endereco)
+    public function update(Request $request, Carrinho $carrinho)
     {
-        $endereco->update($request->all());
-        return redirect(route('perfil', $endereco->ENDERECO_ID));
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Endereco $endereco)
+    public function destroy(Carrinho $carrinho)
     {
         //
     }

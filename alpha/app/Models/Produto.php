@@ -17,6 +17,10 @@ class Produto extends Model
         return $this->hasMany(ProdutoImagem::class, 'PRODUTO_ID','PRODUTO_ID');
     }
 
+    public function Carrinho(){
+        return $this->hasMany(ProdutoImagem::class, 'PRODUTO_ID','PRODUTO_ID');
+    }
+
     public function Categoria(){
         return $this->belongsTo(Categoria::class, 'CATEGORIA_ID', 'CATEGORIA_ID');
     }

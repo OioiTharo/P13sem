@@ -20,12 +20,14 @@
  		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		
-        
-		<style>
+        <style>
             body{font-family: 'Electrolize', sans-serif; margin: 0;}
 			.material-icons{width: 40px}
-			svg{ background-color: #472468;}
-			.categ{ padding: 5px;}
+			svg{ background-color: rgb(255, 189, 89);}
+			.lowprod{ width:80%;}
+			.descricaoProd{}
+			.preco{color:rgb(255, 189, 89); }
+			.quant{width: 50px; border-radius:6px; border: 1px solid black; height: 40px;	}
         </style>
     </head>
 <body>
@@ -55,101 +57,49 @@
 			</div>
 		</div>
 	</header>
-	<!-- carousel -->
-	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-	  <ol class="carousel-indicators">
-		<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-		<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-		<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-	  </ol>
-	  <div class="carousel-inner">
-		<div class="carousel-item active">
-		   <img class="d-block w-100 " src="./images/3.png" alt="First slide">
-		</div>
-		<div class="carousel-item">
-		  <img class="d-block w-100" src="./images/4.png" alt="Second slide">
-		</div>
-		<div class="carousel-item">
-		  <img class="d-block w-100" src="./images/5.png" alt="Third slide">
-		</div>
-	  </div>
-	  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		<span class="sr-only">Previous</span>
-	  </a>
-	  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-		<span class="carousel-control-next-icon" aria-hidden="true"></span>
-		<span class="sr-only">Next</span>
-	  </a>
-	</div>
-	<!-- categorias -->
-	<div class=" py-3 bg-light">
-		<div class="container">
-			<div class="row row-cols-sm-4 row-cols-md-6 text-center align-middle">
-				@foreach ($categorias as $categoria)
-				<div class="col border bg-white categ"><a href="#" class="text-decoration-none text-dark">{{$categoria->CATEGORIA_NOME}}</a></div>
-				@endforeach
+	<!-- COLOCAR AQUI --> 
+	<div class="p-4 container align-items-center">
+       
+		<h2>{{$produto->PRODUTO_NOME}}</h2>
+		<div class="row">
+			<div class="col">
+				<table class="table table-borderless lowprod">
+                    <tr>
+                        <td rowspan="3"><img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="300"></td>
+                        <td>
+                            <svg width="80px" height="80px"></svg>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><svg width="80px" height="80px"></svg></td>
+                    </tr>
+                    <tr>
+                        <td><svg width="80px" height="80px"></svg></td>
+                    </tr>
+				</table>
+			</div>			
+			<div class="col descricaoProd">
+				<p class="text-justify">{{$produto->PRODUTO_DESC}}</p>
+				<h3 class="font-weight-bold preco">{{$produto->PRODUTO_PRECO}}</h3>
+                <form method="POST" action="{{route('carrinho.store')}}">
+                    <input type="hidden" value="{{$produto->PRODUTO_ID}}">
+                    <input type="hidden" value="{{Auth::user()->USUARIO_ID}}">
+                    <input class="quant" type="number" min="0">
+                    <button type="submit" class="btn btn-outline-dark">Comprar</button>
+                </form>
 			</div>
 		</div>
-	</div>
-	<!-- promoções -->
-	<main>
-	  <div class="album py-3 bg-light">
-		<div class="container">
-		  <h1>Promoções</h1>
-		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
-			@foreach ($produtos as $index => $produto)
-				@if ($index>=0 && $index<=4)
-					<div class="p-3 col">
-					<div class="card shadow-sm">
-						<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="200">
-						<div class="card-body">
-						<a class="card-text" href="{{route('produtos.show', $produto->PRODUTO_ID)}}">{{$produto->PRODUTO_NOME}}</a>
-							<p class="card-text"><strong>{{$produto->PRODUTO_PRECO}}</strong></p>
-						</div>
-					</div>
-					</div>
-				@endif
-			@endforeach
-		  </div>
+		<hr>
+		<div class="row">
+			<h3>Informações tecnicas</h3>
+			<p class="text-justify">Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsu</p>
 		</div>
-	  </div>
-	</main>
-	<!-- banners -->
-	<div class="py-3 bg-light">
-		<div class="container">
-			<div class="row row-cols-sm-1 row-cols-md-2">
-				<div class="col-6">
-                    <img src="./images/1.png" width="100%" height="200px">
-				</div>
-				<div class="col-6">
-                    <img src="./images/2.png" width="100%" height="200px">
-				</div>
-			</div>
+		<hr>
+		<div class="row">
+			<h4>Avaliação dos usuarios: </h4>
 		</div>
 	</div>
-	<!-- mais pesquisados -->
-	<div class="album py-3 bg-light">
-		<div class="container">
-		  <h1>Mais pesquisados</h1>
-		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
-			@foreach ($produtos as $index => $produto)
-				@if ($index>=5 && $index<=9)
-					<div class="p-3 col">
-					<div class="card shadow-sm">
-					<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="200">
-						<div class="card-body">
-						<a class="card-text" href="{{route('produtos.show', $produto->PRODUTO_ID)}}">{{$produto->PRODUTO_NOME}}</a>
-							<p class="card-text"><strong>{{$produto->PRODUTO_PRECO}}</strong></p>
-						</div>
-					</div>
-					</div>
-				@endif
-			@endforeach
-		  </div>
-		</div>
-	</div>
-	
+
 	<!-- footer -->
 	<footer class="text-center text-lg-start text-muted" style="background-color: #f5f5f5;">
 	  <!-- Section: Links  -->
@@ -216,6 +166,5 @@
 	  </section>
 	  <!-- Section: Links  -->
 	</footer>
-	
 </body>
 </html>
