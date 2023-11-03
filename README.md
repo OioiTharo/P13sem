@@ -16,3 +16,4 @@ Diario de bordo:
 | 12/10 | Colocamos a home no larevel e add os banners  |
 | 19/10 | Criamos o Produto no laravel e add na home    |
 | 26/10 | Criamos o Login no laravel e add a pag prod   |
+| 02/11 | Criamos o Perfil, o detalhe do prod e carrinho|
