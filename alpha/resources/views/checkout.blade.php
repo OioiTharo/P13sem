@@ -29,7 +29,12 @@
 			main{width:80%; margin-left: 10%;}
 			.bd-placeholder-img { font-size: 1.125rem; text-anchor: middle; -webkit-user-select: none; -moz-user-select: none; user-select: none; }
 			@media (min-width: 768px) {  .bd-placeholder-img-lg { font-size: 3.5rem; } }
+			.end{ margin-bottom: 25px;}
+			.pag{ margin-top: 25px;}
         </style>
+		<script>
+			$('#meuModal').modal(options);
+		</script>
     </head>
 <body>
     <!-- header -->
@@ -68,31 +73,18 @@
 				  <span class="badge bg-dark text-white rounded-pill">3</span>
 				</h4>
         <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Product name</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">R$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Second product</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">R$8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Third item</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">R$5</span>
-          </li>
+          	@foreach ($carrinhos as $carrinho)
+		  	<li class="list-group-item d-flex justify-content-between lh-sm">
+				<div>
+					<h6 class="my-0">{{$carrinho->produto->PRODUTO_NOME}}</h6>
+				</div>
+				<span class="text-muted">{{$carrinho->produto->PRODUTO_PRECO}}</span>
+			</li>
+			@endforeach
           <li class="list-group-item d-flex justify-content-between bg-light">
             <div class="text-success">
               <h6 class="my-0">Codigo Promocional</h6>
-              <small>EXAMPLECODE</small>
+              <small>BLACKFRIDAY</small>
             </div>
             <span class="text-success">−R$5</span>
           </li>
@@ -114,16 +106,18 @@
 		<div class="container">
 			<div class="end">
 				<label> Logradouro: </label>
-                <select class="form-select-sm form-control" required>@foreach (Auth::user()->Enderecos as $endereco)
-                    <option value="{{ $endereco->ENDERECO_ID }}" selected>{{ $endereco->ENDERECO_NOME }} {{ $endereco->ENDERECO_NUMERO }}</option>
-                </select>
-                @endforeach
+                <select class="form-select-sm form-control" required>
+					@foreach (Auth::user()->Enderecos as $endereco)
+                    <option value="{{ $endereco->ENDERECO_ID }}" >{{ $endereco->ENDERECO_NOME }}, nº {{ $endereco->ENDERECO_NUMERO }}</option>
+                	@endforeach
+				</select>
+                <button type="button" class="btn btn-dark mt-4" data-toggle="modal" data-target=".bd-example-modal-lg">Adicionar</button>
 			</div>
 		</div>
 		<hr>
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation pag" novalidate>
          
-          <h4 class="mb-3">Pagamento</h4>
+          <h4 class="mb-3 ">Pagamento</h4>
 
           <div class="my-3">
             <div class="form-check">
@@ -183,7 +177,87 @@
     </div>
   </main>
 
+	<!--modal -->
 
+	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<form class="p-5" method="POST" action="{{route('endereco.store')}}">
+					@csrf
+					<div class="text-center mb-4">
+						<p class="font-weight-normal">Dados para entrega:</p>
+					</div>
+					<div class="p-1 form-row">
+						<input type="text" class="form-control" placeholder="Endereço" id="endereco" name="ENDERECO_NOME" required>
+					</div>
+					<div class="pt-4 form-row">
+						<div class="col">
+							<select class="form-select-sm form-control" name="ENDERECO_LOGRADOURO" required>
+							<option selected>Logradouro</option>
+							<option value="Rua">Rua</option>
+							<option value="Avenida">Avenida</option>
+							<option value="Praça">Praça</option>
+							<option value="Viaduto">Viaduto</option>
+							<option value="Outros">Outros</option>
+							</select>
+						</div>
+						<div class="col">
+							<input type="text" class="form-control" placeholder="Número" name="ENDERECO_NUMERO" required id="numero">
+						</div>
+						<div class="col-6">
+							<input type="text" class="form-control" placeholder="Complemento" name="ENDERECO_COMPLEMENTO" id="complemento">
+						</div>
+					</div>
+					<div class="pt-4 form-row">
+						<div class="col">
+							<input type="text" class="form-control" placeholder="CEP" id="cep" name="ENDERECO_CEP">
+						</div>
+						<div class="col">
+							<input type="text" class="form-control" placeholder="Cidade" id="cidade" name="ENDERECO_CIDADE">
+						</div>
+						<div class="col-3">
+							<select class="form-select-sm form-control" required id="uf" name="ENDERECO_ESTADO">
+								<option selected>UF</option>
+								<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espírito Santo</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="RS">Rio Grande do Sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select>
+						</div>
+					</div>
+					<div class="pt-1 checkbox mb-3">
+						<label>
+						<input type="checkbox" value="lembrar de mim"> Lembrar de mim
+						</label>
+					</div>
+					<button class="btn btn-lg btn-dark btn-block" type="submit">Salvar</button>
+				</form>
+			</div>
+  		</div>
+	</div>
 
 	<!-- footer -->
 	<footer class="text-center text-lg-start text-muted"	style="background-color: #f5f5f5;">

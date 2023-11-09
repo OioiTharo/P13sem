@@ -29,7 +29,10 @@ class CarrinhoController extends Controller
      */
     public function store(Request $request)
     {
-        Carrinho::create($request->all());
+        $usuario = Auth::user();
+        Carrinho::create(['USUARIO_ID'=>$usuario->USUARIO_ID,
+                          'PRODUTO_ID'=>$request->PRODUTO_ID, 
+                          'ITEM_QTD'=>$request->ITEM_QTD]);
         return redirect(route('carrinho'));
     }
 
@@ -38,9 +41,15 @@ class CarrinhoController extends Controller
      */
     public function show(Carrinho $carrinho)
     {
-        //
+        $carrinhos = Carrinho::all();
+        return view('carrinho', ['carrinhos' => $carrinhos]);
     }
 
+    public function checkout(Carrinho $carrinho)
+    {
+        $carrinhos = Carrinho::all();
+        return view('checkout', ['carrinhos' => $carrinhos]);
+    }
     /**
      * Show the form for editing the specified resource.
      */

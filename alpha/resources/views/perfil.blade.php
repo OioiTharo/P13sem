@@ -28,6 +28,7 @@
         </style>
 		<script>
 			$('#meuModal').modal(options);
+			
 		</script>
     </head>
 <body>
@@ -103,35 +104,35 @@
 						<p class="font-weight-normal">Dados para entrega:</p>
 					</div>
 					<div class="p-1 form-row">
-						<input type="text" class="form-control" placeholder="Endereço" id="endereco" required>
+						<input type="text" class="form-control" placeholder="Endereço" id="endereco" name="ENDERECO_NOME" required>
 					</div>
 					<div class="pt-4 form-row">
 						<div class="col">
-							<select class="form-select-sm form-control" required>
+							<select class="form-select-sm form-control" name="ENDERECO_LOGRADOURO" required>
 							<option selected>Logradouro</option>
-							<option value="1">Rua</option>
-							<option value="2">Avenida</option>
-							<option value="3">Praça</option>
-							<option value="3">Viaduto</option>
-							<option value="3">Outros</option>
+							<option value="Rua">Rua</option>
+							<option value="Avenida">Avenida</option>
+							<option value="Praça">Praça</option>
+							<option value="Viaduto">Viaduto</option>
+							<option value="Outros">Outros</option>
 							</select>
 						</div>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Número" required id="numero">
+							<input type="text" class="form-control" placeholder="Número" name="ENDERECO_NUMERO" required id="numero">
 						</div>
 						<div class="col-6">
-							<input type="text" class="form-control" placeholder="Complemento" id="complemento">
+							<input type="text" class="form-control" placeholder="Complemento" name="ENDERECO_COMPLEMENTO" id="complemento">
 						</div>
 					</div>
 					<div class="pt-4 form-row">
 						<div class="col">
-							<input type="text" class="form-control" placeholder="CEP" id="cep">
+							<input type="text" class="form-control" placeholder="CEP" id="cep" name="ENDERECO_CEP">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Cidade" id="cidade">
+							<input type="text" class="form-control" placeholder="Cidade" id="cidade" name="ENDERECO_CIDADE">
 						</div>
 						<div class="col-3">
-							<select class="form-select-sm form-control" required id="uf">
+							<select class="form-select-sm form-control" required id="uf" name="ENDERECO_ESTADO">
 								<option selected>UF</option>
 								<option value="AC">Acre</option>
 								<option value="AL">Alagoas</option>
@@ -240,5 +241,6 @@
 	  </section>
 	  <!-- Section: Links  -->
 	</footer>
+	
 </body>
 </html>

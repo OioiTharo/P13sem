@@ -10,4 +10,9 @@ class Carrinho extends Model
     use HasFactory;
     protected $fillable = ['USUARIO_ID',  'PRODUTO_ID', 'ITEM_QTD'];
     protected $table = "CARRINHO_ITEM";
+
+    public function produto(){
+        return $this->belongsTo(Produto::class, 'PRODUTO_ID', 'id');
+    }
+
 }

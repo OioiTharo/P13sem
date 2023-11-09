@@ -6,7 +6,7 @@
 		<!-- Css proprio-->
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>	
 		<!-- Colocar icone na pagina -->
-		<link rel="icon" href="./images/icon.png" type="image/x-icon"/>
+		<link rel="icon" href="../images/icon.png" type="image/x-icon"/>
 		<link rel="shortcut icon" href="./images/icon.png" type="image/x-icon"/>
 		<!-- Google font -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,7 @@
 		<div class="container">
 			<div class="d-flex flex-wrap align-items-center justify-content-center">
 				<a href="{{ url('/') }}" class="align-items-center text-decoration-none">
-					<img src="./images/logo.png" height="40" class="d-inline-block align-top" alt="">
+					<img src="../images/logo.png" height="40" class="d-inline-block align-top" alt="">
 				</a>
 
 				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -111,7 +111,7 @@
 			<div class="col-12 col-lg-3 col-sm-12 mb-2">
 			  <!-- Content -->
 			  <a href="https://mdbootstrap.com/" target="_blank" class="">
-				<img src="./images/logo.png" height="50" />
+				<img src="../images/logo.png" height="50" />
 			  </a>
 			  <p class="mt-2 text-dark">
 				© 2023 GT

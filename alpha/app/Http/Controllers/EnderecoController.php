@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Endereco;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class EnderecoController extends Controller
 {
@@ -29,7 +31,15 @@ class EnderecoController extends Controller
      */
     public function store(Request $request)
     {
-        Endereco::create($request->all());
+        $usuario = Auth::user();
+        Endereco::create(['USUARIO_ID'=>$usuario->USUARIO_ID, 
+                         'ENDERECO_NOME'=>$request->ENDERECO_NOME,  
+                         'ENDERECO_LOGRADOURO'=>$request->ENDERECO_LOGRADOURO, 
+                         'ENDERECO_NUMERO'=>$request->ENDERECO_NUMERO, 
+                         'ENDERECO_COMPLEMENTO'=>$request->ENDERECO_COMPLEMENTO,
+                         'ENDERECO_CEP'=>$request->ENDERECO_CEP,
+                         'ENDERECO_CIDADE'=>$request->ENDERECO_CIDADE,
+                         'ENDERECO_ESTADO'=>$request->ENDERECO_ESTADO]);
         return redirect(route('perfil'));
     }
 

@@ -22,8 +22,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::post('/endereco/store','EnderecoController@store')->name('endereco.store');
-Route::post('/carrinho/store','CarrinhoController@store')->name('carrinho.store');
+
 
 //rotas
 Route::get('/', [HomeController::class, 'home']);
@@ -34,18 +33,17 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/perfil', function () {
         return view('perfil');
-    });
+    })->name('perfil');
 
     Route::get('/logout', function () {
         Auth::logout();
         return redirect ("/");
     });
-
+    Route::post('/endereco/store',[EnderecoController::class,'store'])->name('endereco.store');
     Route::resource('/carrinho', CarrinhoController::class);
 
-    Route::get('/checkout', function () {
-        return view('checkout');
-    });
+    Route::get('/checkout',[CarrinhoController::class,'checkout'])->name('checkout');
+
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
