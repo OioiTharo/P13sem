@@ -73,6 +73,9 @@
 				  <span class="badge bg-dark text-white rounded-pill">3</span>
 				</h4>
         <ul class="list-group mb-3">
+			@php
+				$totalCompra = -5;
+			@endphp
           	@foreach ($carrinhos as $carrinho)
 		  	<li class="list-group-item d-flex justify-content-between lh-sm">
 				<div>
@@ -80,6 +83,10 @@
 				</div>
 				<span class="text-muted">{{$carrinho->produto->PRODUTO_PRECO}}</span>
 			</li>
+
+			@php
+				$totalCompra += $carrinho->ITEM_QTD * $carrinho->produto->PRODUTO_PRECO ;
+			@endphp
 			@endforeach
           <li class="list-group-item d-flex justify-content-between bg-light">
             <div class="text-success">
@@ -90,7 +97,7 @@
           </li>
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (BRL)</span>
-            <strong>R$20</strong>
+            <strong>{{$totalCompra}}</strong>
           </li>
         </ul>
 
@@ -285,9 +292,8 @@
 				Loja
 			  </h6>
 			  <ul class="list-unstyled mb-4">
-				<li><a class="text-muted" href="#">Sobre</a></li>
 				<li><a class="text-muted" href="#">Endereços</a></li>
-				<li><a class="text-muted" href="#">Produtos</a></li>
+				<li><a class="text-muted" href="{{ url('/produtos') }}">Produtos</a></li>
 			  </ul>
 			</div>
 			<!-- Grid column -->

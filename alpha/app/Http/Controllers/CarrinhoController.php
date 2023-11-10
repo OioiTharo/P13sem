@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Produto;
 use App\Models\Carrinho;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CarrinhoController extends Controller
 {
@@ -13,7 +14,9 @@ class CarrinhoController extends Controller
      */
     public function index()
     {
-        //
+        $produtos = Produto::all();
+        $carrinhos = Carrinho::all();
+        return view('carrinho', ['produtos' =>  $produtos, 'carrinhos' => $carrinhos]);
     }
 
     /**
@@ -30,12 +33,36 @@ class CarrinhoController extends Controller
     public function store(Request $request)
     {
         $usuario = Auth::user();
-        Carrinho::create(['USUARIO_ID'=>$usuario->USUARIO_ID,
-                          'PRODUTO_ID'=>$request->PRODUTO_ID, 
-                          'ITEM_QTD'=>$request->ITEM_QTD]);
-        return redirect(route('carrinho'));
+        $produtoId = $request->input('produto_id');
+        $produto = Produto::find($produtoId);
+        $quantidade = $request->input('quantidade');
+
+        $request->validate([
+            'produto_id' => 'required|exists:PRODUTO,PRODUTO_ID',
+        ]);
+        $carrinhoItem = Carrinho::where('USUARIO_ID', $usuario->USUARIO_ID)
+            ->where('PRODUTO_ID', $produtoId)
+            ->first();
+        
+        if ($carrinhoItem) {
+            // Item já existe no carrinho, atualize a quantidade
+            $carrinhoItem->$quantidade;
+            $carrinhoItem->save();
+        } else {
+            // Item não existe no carrinho, crie um novo
+            Carrinho::create([
+                'USUARIO_ID' => $usuario->USUARIO_ID,
+                'PRODUTO_ID' => $produtoId,
+                'ITEM_QTD'   => $quantidade,
+            ]);
+        }
+        $produtos = Produto::all();
+        $carrinhos = Carrinho::all();
+        return view('carrinho', ['produtos' =>  $produtos, 'carrinhos' => $carrinhos]);
+
     }
 
+    
     /**
      * Display the specified resource.
      */
@@ -63,7 +90,11 @@ class CarrinhoController extends Controller
      */
     public function update(Request $request, Carrinho $carrinho)
     {
-        //
+        $carrinho->update([
+            'ITEM_QTD' => $request->input('quantidade'),
+        ]);
+    
+        return redirect(route('carrinho', ['carrinho' => $carrinho->PRODUTO_ID]));
     }
 
     /**

@@ -176,9 +176,8 @@
 				Loja
 			  </h6>
 			  <ul class="list-unstyled mb-4">
-				<li><a class="text-muted" href="#">Sobre</a></li>
 				<li><a class="text-muted" href="#">Endereços</a></li>
-				<li><a class="text-muted" href="#">Produtos</a></li>
+				<li><a class="text-muted" href="{{ url('/produtos') }}">Produtos</a></li>
 			  </ul>
 			</div>
 			<!-- Grid column -->

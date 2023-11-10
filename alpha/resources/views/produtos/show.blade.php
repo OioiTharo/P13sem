@@ -28,7 +28,11 @@
 			.descricaoProd{}
 			.preco{color:rgb(255, 189, 89); }
 			.quant{width: 50px; border-radius:6px; border: 1px solid black; height: 40px;	}
-        </style>
+			.review { border: 1px solid #ccc; padding: 10px; margin-bottom: 15px; }
+			.reviewer-name { font-weight: bold; color: #472468; }
+			.review-date { color: #666; }
+			.review-text { margin-top: 10px; }
+		</style>
     </head>
 <body>
     <!-- header -->
@@ -84,7 +88,7 @@
                 <form method="POST" action="{{route('carrinho.store')}}">
                     <input type="hidden" value="{{$produto->PRODUTO_ID}}">
                     <input type="hidden" value="{{Auth::user()->USUARIO_ID}}">
-                    <input class="quant" type="number" min="0">
+                    QTD: <input class="quant" type="number" min="0">
                     <button type="submit" class="btn btn-outline-dark">Comprar</button>
                 </form>
 			</div>
@@ -97,6 +101,28 @@
 		<hr>
 		<div class="row">
 			<h4>Avaliação dos usuarios: </h4>
+			<div class="col" >
+				<div class="review">
+					<p class="reviewer-name">João</p>
+					<p class="review-date">10 de novembro de 2023</p>
+					<p class="review-text">Ótimo produto! Estou muito satisfeito com a qualidade.</p>
+				</div>
+				<div class="review">
+					<p class="reviewer-name">Maria</p>
+					<p class="review-date">9 de novembro de 2023</p>
+					<p class="review-text">Entrega rápida e produto conforme descrição. Recomendo!</p>
+				</div>
+				<div class="review">
+					<p class="reviewer-name">Henrique</p>
+					<p class="review-date">4 de agosto de 2023</p>
+					<p class="review-text">Muito bom! Melhor produto que já usei.</p>
+				</div>
+				<div class="review">
+					<p class="reviewer-name">Isabella</p>
+					<p class="review-date">27 de fevereiro de 2023</p>
+					<p class="review-text">Produto conforme descrição!</p>
+				</div>
+			</div>	
 		</div>
 	</div>
 
@@ -126,9 +152,8 @@
 				Loja
 			  </h6>
 			  <ul class="list-unstyled mb-4">
-				<li><a class="text-muted" href="#">Sobre</a></li>
 				<li><a class="text-muted" href="#">Endereços</a></li>
-				<li><a class="text-muted" href="#">Produtos</a></li>
+				<li><a class="text-muted" href="{{ url('/produtos') }}">Produtos</a></li>
 			  </ul>
 			</div>
 			<!-- Grid column -->
