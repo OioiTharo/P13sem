@@ -17,4 +17,4 @@ Diario de bordo:
 | 19/10 | Criamos o Produto no laravel e add na home    |
 | 26/10 | Criamos o Login no laravel e add a pag prod   |
 | 02/11 | Criamos o Perfil, o detalhe do prod e carrinho|
-| 02/11 | Criamos o o carrinho e pagina de checkout     |
+| 09/11 | Criamos o o carrinho e pagina de checkout     |
