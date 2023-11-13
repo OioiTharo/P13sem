@@ -32,35 +32,32 @@ class CarrinhoController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario = Auth::user();
-        $produtoId = $request->input('produto_id');
-        $produto = Produto::find($produtoId);
-        $quantidade = $request->input('quantidade');
+    $usuario = Auth::user();
+    $produtoId = $request->input('produto_id');
+    $produto = Produto::find($produtoId);
+    $quantidade = $request->input('quantidade');
 
-        $request->validate([
-            'produto_id' => 'required|exists:PRODUTO,PRODUTO_ID',
+    $carrinhoItem = Carrinho::where('USUARIO_ID', $usuario->USUARIO_ID)
+        ->where('PRODUTO_ID', $produtoId)
+        ->first();
+
+    if ($carrinhoItem) {
+        // Item já existe no carrinho, atualize a quantidade
+        $carrinhoItem->ITEM_QTD += $quantidade; // Adicione a quantidade existente
+        $carrinhoItem->save();
+    } else {
+        // Item não existe no carrinho, crie um novo
+        Carrinho::create([
+            'USUARIO_ID' => $usuario->USUARIO_ID,
+            'PRODUTO_ID' => $produtoId,
+            'ITEM_QTD'   => $quantidade,
         ]);
-        $carrinhoItem = Carrinho::where('USUARIO_ID', $usuario->USUARIO_ID)
-            ->where('PRODUTO_ID', $produtoId)
-            ->first();
-        
-        if ($carrinhoItem) {
-            // Item já existe no carrinho, atualize a quantidade
-            $carrinhoItem->$quantidade;
-            $carrinhoItem->save();
-        } else {
-            // Item não existe no carrinho, crie um novo
-            Carrinho::create([
-                'USUARIO_ID' => $usuario->USUARIO_ID,
-                'PRODUTO_ID' => $produtoId,
-                'ITEM_QTD'   => $quantidade,
-            ]);
-        }
-        $produtos = Produto::all();
-        $carrinhos = Carrinho::all();
-        return view('carrinho', ['produtos' =>  $produtos, 'carrinhos' => $carrinhos]);
-
     }
+
+    // Restante do seu código...
+
+    // Após as operações no carrinho, provavelmente você desejará retornar a view do carrinho com os itens atualizados.
+}
 
     
     /**

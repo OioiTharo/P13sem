@@ -82,6 +82,8 @@
 					@endphp
 
 					@foreach ($carrinhos as $carrinho)
+
+					@if (($loop->first || $carrinho->PRODUTO_ID != $carrinhos[$loop->index - 1]->PRODUTO_ID ) && $carrinho->ITEM_QTD > 0)
 						<div class="row border">
 							<div class="p-3 col">{{$carrinho->produto->PRODUTO_NOME}}</div>
 							<div class="p-3 col">R$ {{$carrinho->produto->PRODUTO_PRECO}}</div>
@@ -91,7 +93,9 @@
 							</div>
 							<div class="p-3 col">R$ {{$carrinho->ITEM_QTD * $carrinho->produto->PRODUTO_PRECO}}</div>
 						</div>
-
+						@else
+							
+						@endif
 						@php
 							$totalCompra += $carrinho->ITEM_QTD * $carrinho->produto->PRODUTO_PRECO;
 						@endphp
@@ -127,7 +131,7 @@
 		</div>
 	</div>
     <!-- footer -->
-	<footer class="text-center text-lg-start text-muted fixed-bottom" style="background-color: #f5f5f5;">
+	<footer class="text-center text-lg-start text-muted " style="background-color: #f5f5f5;">
 	  <!-- Section: Links  -->
 	  <section class="">
 		<div class="container text-center text-md-start pt-4 pb-4">
