@@ -86,9 +86,9 @@
 				<p class="text-justify">{{$produto->PRODUTO_DESC}}</p>
 				<h3 class="font-weight-bold preco">{{$produto->PRODUTO_PRECO}}</h3>
                 <form method="POST" action="{{route('carrinho.store')}}">
-                    <input type="hidden" value="{{$produto->PRODUTO_ID}}">
-                    <input type="hidden" value="{{Auth::user()->USUARIO_ID}}">
-                    QTD: <input class="quant" type="number" min="0">
+					@csrf
+                    <input type="hidden" name="PRODUTO_ID" value="{{$produto->PRODUTO_ID}}">
+                    QTD: <input class="quant" name="ITEM_QTD" value="{{$produto->ITEM_QTD}}" type="number" min="0">
                     <button type="submit" class="btn btn-outline-dark">Comprar</button>
                 </form>
 			</div>

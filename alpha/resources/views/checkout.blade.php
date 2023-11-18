@@ -70,13 +70,13 @@
 			<div class="col-md-5 col-lg-4 order-md-last">
 				<h4 class="d-flex justify-content-between align-items-center mb-3">
 				  <span class="text-dark">Seu carrinho</span>
-				  <span class="badge bg-dark text-white rounded-pill">3</span>
 				</h4>
         <ul class="list-group mb-3">
 			@php
 				$totalCompra = -5;
 			@endphp
           	@foreach ($carrinhos as $carrinho)
+			@if( $carrinho->ITEM_QTD > 0 &&  $carrinho->USUARIO_ID == Auth::user()->USUARIO_ID)
 		  	<li class="list-group-item d-flex justify-content-between lh-sm">
 				<div>
 					<h6 class="my-0">{{$carrinho->produto->PRODUTO_NOME}}</h6>
@@ -87,6 +87,9 @@
 			@php
 				$totalCompra += $carrinho->ITEM_QTD * $carrinho->produto->PRODUTO_PRECO ;
 			@endphp
+			@else
+
+			@endif
 			@endforeach
           <li class="list-group-item d-flex justify-content-between bg-light">
             <div class="text-success">

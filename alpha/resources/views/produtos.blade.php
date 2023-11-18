@@ -65,7 +65,7 @@
 							@if($produto->ProdutoImagens->count() > 0)
 							<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="200">
 							@else
-							<img src="" width="100%" height="200">
+							<img src="./images/carrinho.jpg" width="100%" height="200">
 							@endif
 							<div class="card-body">
 								<a class="card-text" href="{{route('produtos.show', $produto->PRODUTO_ID)}}">{{$produto->PRODUTO_NOME}}</a>

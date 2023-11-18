@@ -82,8 +82,7 @@
 					@endphp
 
 					@foreach ($carrinhos as $carrinho)
-
-					@if (($loop->first || $carrinho->PRODUTO_ID != $carrinhos[$loop->index - 1]->PRODUTO_ID ) && $carrinho->ITEM_QTD > 0)
+						@if( $carrinho->ITEM_QTD > 0 &&  $carrinho->USUARIO_ID == Auth::user()->USUARIO_ID)
 						<div class="row border">
 							<div class="p-3 col">{{$carrinho->produto->PRODUTO_NOME}}</div>
 							<div class="p-3 col">R$ {{$carrinho->produto->PRODUTO_PRECO}}</div>
@@ -93,13 +92,14 @@
 							</div>
 							<div class="p-3 col">R$ {{$carrinho->ITEM_QTD * $carrinho->produto->PRODUTO_PRECO}}</div>
 						</div>
-						@else
-							
-						@endif
 						@php
 							$totalCompra += $carrinho->ITEM_QTD * $carrinho->produto->PRODUTO_PRECO;
 						@endphp
-					@endforeach
+						@else
+							
+						@endif
+						
+					@endforeach	
 
 					<div class="row border">
 						<div class="p-3 col"></div>
@@ -119,11 +119,11 @@
 	<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
-			<form class="p-5" method="POST" action="">
+			<form class="p-5" method="POST" action="{{route('carrinho.store')}}">
 				@csrf
-				<input type="hidden" name="produto_id" id="produto_id" value="">
+				<input type="hidden" name="{{$carrinho->PRODUTO_ID}}" id="produto_id" value="">
 
-				Quantidade: <input class="quant" type="number" min="0" name="quantidade" value="{{$carrinho->ITEM_QTD}} ">
+				Quantidade: <input class="quant" type="number" min="0" name="{{$carrinho->ITEM_QTD}}" value="{{$carrinho->ITEM_QTD}} ">
 				<button type="submit" class="btn btn-dark">Atualizar Carrinho</button>
 			</form>
 
