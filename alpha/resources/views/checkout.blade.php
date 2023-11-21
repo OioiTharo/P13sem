@@ -104,12 +104,11 @@
           </li>
         </ul>
 
-        <form class="card p-2">
+        <form class="card p-2" method="POST" action="{{route('pedido.store')}}">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Codigo Promocional">
             <button type="submit" class="btn btn-secondary">Adicionar</button>
           </div>
-        </form>
       </div>
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Endereço</h4>
@@ -125,7 +124,6 @@
 			</div>
 		</div>
 		<hr>
-        <form class="needs-validation pag" novalidate>
          
           <h4 class="mb-3 ">Pagamento</h4>
 

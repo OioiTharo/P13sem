@@ -43,7 +43,7 @@
 				  <li><a href="#" class="nav-link px-2 text-dark">Sac</a></li>
 				</ul>
 
-				<form action="{{ url('/pesquisar') }}" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+				<form action="" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
 					<input type="search" name="q" class="form-control form-control-dark" placeholder="Pesquisar...">
 				</form>
 

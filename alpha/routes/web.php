@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\PedidoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +47,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::post('/endereco/store',[EnderecoController::class,'store'])->name('endereco.store');
+    Route::post('/pedido/store',[PedidoController::class,'store'])->name('pedido.store');
     Route::resource('/carrinho', CarrinhoController::class);
     Route::get('/checkout',[CarrinhoController::class,'checkout'])->name('checkout');
 

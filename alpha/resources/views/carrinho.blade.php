@@ -53,7 +53,7 @@
 				</ul>
 
 				<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-					<input type="search" class="form-control form-control-dark" placeholder="Pesquisar...">
+					<input type="search"  class="form-control form-control-dark" placeholder="Pesquisar...">
 				</form>
 
 				<div class="text-end">
@@ -131,7 +131,7 @@
 		</div>
 	</div>
     <!-- footer -->
-	<footer class="text-center text-lg-start text-muted " style="background-color: #f5f5f5;">
+	<footer class="text-center text-lg-start text-muted fixed-bottom" style="background-color: #f5f5f5;">
 	  <!-- Section: Links  -->
 	  <section class="">
 		<div class="container text-center text-md-start pt-4 pb-4">

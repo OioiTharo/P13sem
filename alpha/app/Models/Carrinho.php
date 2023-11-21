@@ -16,5 +16,6 @@ class Carrinho extends Model
         return $this->belongsTo(Produto::class, 'PRODUTO_ID', 'PRODUTO_ID');
     }
     
+    
 
 }
