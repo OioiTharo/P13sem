@@ -40,7 +40,7 @@ class EnderecoController extends Controller
                          'ENDERECO_CEP'=>$request->ENDERECO_CEP,
                          'ENDERECO_CIDADE'=>$request->ENDERECO_CIDADE,
                          'ENDERECO_ESTADO'=>$request->ENDERECO_ESTADO]);
-        return redirect(route('perfil'));
+        return redirect(route('perfil.index'));
     }
 
     /**

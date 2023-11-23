@@ -26,6 +26,7 @@
 			.material-icons{width: 40px}
 			svg{ background-color: #472468;}
 			.categ{ padding: 5px;}
+			select{border-radius: 8px; border: 1px solid black; padding: 2px;}
         </style>
     </head>
 <body>
@@ -38,9 +39,10 @@
 				</a>
 
 				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-				  <li><a href="{{ url('/') }}" class="nav-link px-2 text-secondary">Home</a></li>
-				  <li><a href="{{ url('/produtos') }}" class="nav-link px-2 text-dark">Produtos</a></li>
+				  <li><a href="{{ url('/') }}" class="nav-link px-2 text-dark">Home</a></li>
+				  <li><a href="{{ url('/produtos') }}" class="nav-link px-2 text-secondary">Produtos</a></li>
 				  <li><a href="#" class="nav-link px-2 text-dark">Sac</a></li>
+				  <li><a href="{{ url('/logout') }}" class="nav-link px-2 text-dark">Sair</a></li>
 				</ul>
 
 				<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -57,6 +59,16 @@
 	</header>
 	<!-- produtos -->
 	<div class="album py-3 bg-light">
+		<div class="container">
+			
+			<p>Filtrar por categoria:
+			<select>
+				@foreach ($categorias as $categoria)
+                <option  value="{{ $categoria->CATEGORIA_ID }}" >{{ $categoria->CATEGORIA_NOME}}</option>
+				@endforeach
+			</select>
+			</p>
+		</div>
 		<div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
 			@foreach ($produtos as $produto)

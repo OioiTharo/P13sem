@@ -31,10 +31,6 @@ Route::get('/', [HomeController::class, 'home']);
 Route::resource('/categorias', CategoriaController::class);
 
 Route::middleware('auth')->group(function () {
-    
-    Route::get('/perfil', function () {
-        return view('perfil');
-    })->name('perfil');
 
     Route::get('/logout', function () {
         Auth::logout();
