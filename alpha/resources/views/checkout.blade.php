@@ -104,7 +104,8 @@
           </li>
         </ul>
 
-        <form class="card p-2" method="POST" action="{{route('pedido.store')}}">
+        <form class="card p-2" method="POST" action="{{route('perfil.store')}}">
+			@csrf
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Codigo Promocional">
             <button type="submit" class="btn btn-secondary">Adicionar</button>
@@ -115,9 +116,9 @@
 		<div class="container">
 			<div class="end">
 				<label> Logradouro: </label>
-                <select class="form-select-sm form-control" required>
+                <select class="form-select-sm form-control" name="ENDERECO_ID" required>
 					@foreach (Auth::user()->Enderecos as $endereco)
-                    <option value="{{ $endereco->ENDERECO_ID }}" >{{ $endereco->ENDERECO_NOME }}, nº {{ $endereco->ENDERECO_NUMERO }}</option>
+                    <option  value="{{ $endereco->ENDERECO_ID }}" >{{ $endereco->ENDERECO_NOME }}, nº {{ $endereco->ENDERECO_NUMERO }}</option>
                 	@endforeach
 				</select>
                 <button type="button" class="btn btn-dark mt-4" data-toggle="modal" data-target=".bd-example-modal-lg">Adicionar</button>

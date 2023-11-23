@@ -27,7 +27,7 @@
 			.lowprod{ width:80%;}
 			.descricaoProd{}
 			.preco{color:rgb(255, 189, 89); }
-			.quant{width: 50px; border-radius:6px; border: 1px solid black; height: 40px;	}
+			.quant{width: 50px; border-radius:6px; border: 1px solid black; height: 40px; text-align:center;}
 			.review { border: 1px solid #ccc; padding: 10px; margin-bottom: 15px; }
 			.reviewer-name { font-weight: bold; color: #472468; }
 			.review-date { color: #666; }

@@ -5,12 +5,17 @@ use App\Models\Carrinho;
 use App\Models\Pedido;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
 
 class PedidoController extends Controller
 {
     public function index()
     {
-        //
+        $usuario = Auth::user();
+        $pedidos = Pedido::where(['USUARIO_ID' => $usuario->USUARIO_ID])->get();
+        return view('perfil', ['pedidos' => $pedidos]);
     }
 
     /**
@@ -28,7 +33,7 @@ class PedidoController extends Controller
     {
         $usuario = Auth::user();
         $produto = $request->ENDERECO_ID;
-        $data = DateTime();
+        $data = Carbon::now();
         $status = 1;
         
         Pedido::create([
@@ -38,12 +43,13 @@ class PedidoController extends Controller
             'STATUS_ID' => $status,
         ]);
         
-        $carrinhoItem = Carrinho::where('USUARIO_ID', $usuario->USUARIO_ID)
-            ->first();
-        $carrinhoItem-> ITEM_QTD == 0;
-        $carrinhoItem-> save();
-
-        return redirect(route('perfil'));
+        $carrinhoItens = Carrinho::where('USUARIO_ID', $usuario->USUARIO_ID)->get();
+        
+        foreach($carrinhoItens as $item){
+            $item->ITEM_QTD = 0;
+            $item->save();
+        }
+        return redirect(route('perfil.index'));
     }
 
     /**

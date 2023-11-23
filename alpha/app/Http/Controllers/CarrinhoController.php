@@ -13,7 +13,7 @@ class CarrinhoController extends Controller
     public function index(Carrinho $carrinho)
     {
         $usuario = Auth::user();
-        $carrinhos = Carrinho::all();
+        $carrinhos = Carrinho::where(['USUARIO_ID' => $usuario->USUARIO_ID])->get();
         return view('carrinho', ['carrinhos' => $carrinhos]);
     }
 
@@ -22,11 +22,12 @@ class CarrinhoController extends Controller
         $usuario = Auth::user();
         $produto = $request->PRODUTO_ID;
         
-        $carrinhoItem = Carrinho::where('USUARIO_ID', $usuario->USUARIO_ID && 'PRODUTO_ID', $produto)
+        $carrinhoItem = Carrinho::where('USUARIO_ID', $usuario->USUARIO_ID)
+            ->where('PRODUTO_ID', $produto)
             ->first();
     
         if ($carrinhoItem) {
-            $carrinhoItem->ITEM_QTD += $request->ITEM_QTD; 
+            $carrinhoItem->ITEM_QTD = $request->ITEM_QTD; 
             $carrinhoItem->save();
         } else {
             Carrinho::create([

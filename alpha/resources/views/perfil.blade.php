@@ -88,9 +88,19 @@
 		<br>
         <div class="profile p-3">
             <h2>Histórico de Compras</h2>
-            <ul id="">
-                <!-- As compras do usuário serão preenchidas dinamicamente com JavaScript -->
-            </ul>
+			<br>
+			@foreach ($pedidos as $pedido)
+			<div class="row">
+				<div class="col">
+					<p><strong>Endereço de entrega:</strong> <span id="endereco">{{ $pedido->ENDERECO->ENDERECO_NOME }}, nº {{ $pedido->ENDERECO->ENDERECO_NUMERO }}</span></p>
+				</div>
+				<div class="col">
+					<p><strong>Data do pedido:</strong> <span id="data">{{ $pedido->PEDIDO_DATA }}</span></p>
+				</div>
+			</div>
+			<hr>
+		@endforeach
+
         </div>
     </div>
 	<!--modal -->

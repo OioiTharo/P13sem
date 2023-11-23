@@ -35,6 +35,7 @@
 			.material-icons{width: 40px}
 			svg{ background-color: #472468;}
 			.categ{ padding: 5px;}
+			.quant{width: 50px; border-radius:6px; border: 1px solid black; height: 40px; text-align:center;}
         </style>
     </head>
 <body>
@@ -81,19 +82,24 @@
 						$totalCompra = 0;
 					@endphp
 
-					@foreach ($carrinhos as $carrinho)
-						@if( $carrinho->ITEM_QTD > 0 &&  $carrinho->USUARIO_ID == Auth::user()->USUARIO_ID)
-						<div class="row border">
-							<div class="p-3 col">{{$carrinho->produto->PRODUTO_NOME}}</div>
-							<div class="p-3 col">R$ {{$carrinho->produto->PRODUTO_PRECO}}</div>
-							<div class="p-3 col text-align-center">
-								{{$carrinho->ITEM_QTD}} 
-								<button class="ml-3 btn btn-dark editar-btn" data-toggle="modal" data-target="#modalEditar" data-produto-id="{{$carrinho->produto->PRODUTO_ID}}">Editar</button>
+					
+					@foreach ($carrinhos as $item)
+						@if($item->ITEM_QTD > 0)
+						<form method="POST" action="{{route('carrinho.store')}}">
+							@csrf
+							<div class="row border">
+								<div class="p-3 col">{{$item->produto->PRODUTO_NOME}}</div>
+								<div class="p-3 col">R$ {{$item->produto->PRODUTO_PRECO}}</div>
+								<div class="p-3 col text-align-center">
+									<input type="hidden" name="PRODUTO_ID" value="{{$item->PRODUTO_ID}}">
+									<input type="number" class="quant" value="{{$item->ITEM_QTD}}" name="ITEM_QTD" /> 
+									<button class="ml-3 btn btn-dark editar-btn" type="submit">Salvar</button>
+								</div>
+								<div class="p-3 col">R$ {{$item->ITEM_QTD * $item->produto->PRODUTO_PRECO}}</div>
 							</div>
-							<div class="p-3 col">R$ {{$carrinho->ITEM_QTD * $carrinho->produto->PRODUTO_PRECO}}</div>
-						</div>
+						</form>
 						@php
-							$totalCompra += $carrinho->ITEM_QTD * $carrinho->produto->PRODUTO_PRECO;
+							$totalCompra += $item->ITEM_QTD * $item->produto->PRODUTO_PRECO;
 						@endphp
 						@else
 							
@@ -115,21 +121,6 @@
 		</div>
 	</div>
     
-	<!--modal-->
-	<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-			<form class="p-5" method="POST" action="{{route('carrinho.store')}}">
-				@csrf
-				<input type="hidden" name="{{$carrinho->PRODUTO_ID}}" id="produto_id" value="">
-
-				Quantidade: <input class="quant" type="number" min="0" name="{{$carrinho->ITEM_QTD}}" value="{{$carrinho->ITEM_QTD}} ">
-				<button type="submit" class="btn btn-dark">Atualizar Carrinho</button>
-			</form>
-
-			</div>
-		</div>
-	</div>
     <!-- footer -->
 	<footer class="text-center text-lg-start text-muted fixed-bottom" style="background-color: #f5f5f5;">
 	  <!-- Section: Links  -->
