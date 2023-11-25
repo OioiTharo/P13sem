@@ -18,6 +18,13 @@ class ProdutoController extends Controller
         return view('produtos', ['produtos' =>  $produtos, 'categorias' => $categorias]);
     }
 
+    public function filtrarPorCategoria($categoriaId)
+    {
+        $produtos = Produto::where('categoria_id', $categoriaId)->get();
+        
+        return view('partials.produtos', compact('produtos'));
+    }
+
     public function create()
     {
         

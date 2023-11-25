@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkout',[CarrinhoController::class,'checkout'])->name('checkout');
 
     Route::resource('/produtos', ProdutoController::class);
+    Route::get('/produtos/filtrar/{categoria}', [ProdutoController::class, 'filtrarPorCategoria']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

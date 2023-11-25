@@ -19,7 +19,6 @@
  		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
  		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		
         
 		<style>
             body{font-family: 'Electrolize', sans-serif; margin: 0;}
@@ -28,6 +27,23 @@
 			.categ{ padding: 5px;}
 			select{border-radius: 8px; border: 1px solid black; padding: 2px;}
         </style>
+		<script>
+			function filtrarProdutos() {
+				var categoriaSelecionada = document.getElementById('categoriaFiltro').value;
+
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						document.getElementById('produtosContainer').innerHTML = xhr.responseText;
+					}
+				};
+
+				xhr.open('GET', '/produtos/filtrar/' + categoriaSelecionada, true);
+				xhr.send();
+			}
+		</script>
+
+
     </head>
 <body>
     <!-- header -->
@@ -58,21 +74,21 @@
 		</div>
 	</header>
 	<!-- produtos -->
-	<div class="album py-3 bg-light">
+	<div class="album py-3 bg-light" id="app">
 		<div class="container">
-			
-			<p>Filtrar por categoria:
-			<select>
+			<label for="categoriaFiltro">Filtrar por categoria:</label>
+			<select id="categoriaFiltro" onchange="filtrarProdutos()">
+				<option value="">Todos</option>
 				@foreach ($categorias as $categoria)
-                <option  value="{{ $categoria->CATEGORIA_ID }}" >{{ $categoria->CATEGORIA_NOME}}</option>
+					<option value="{{ $categoria->CATEGORIA_ID }}">{{ $categoria->CATEGORIA_NOME }}</option>
 				@endforeach
 			</select>
 			</p>
 		</div>
 		<div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
-			@foreach ($produtos as $produto)
-					<div class="p-3 col">
+			<div id="produtosContainer" class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
+				@foreach ($produtos as $produto)
+					<div v-for="produto in produtosFiltrados" class="p-3 col">
 						<div class="card shadow-sm">
 							@if($produto->ProdutoImagens->count() > 0)
 							<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="200">
@@ -85,8 +101,8 @@
 							</div>
 						</div>
 					</div>
-			@endforeach
-		  </div>
+				@endforeach
+		  	</div>
 		</div>
 	</div>
 	<!-- footer -->
