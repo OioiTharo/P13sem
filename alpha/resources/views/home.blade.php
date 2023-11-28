@@ -88,7 +88,7 @@
 	<!-- categorias -->
 	<div class=" py-3 bg-light">
 		<div class="container">
-			<div class="row row-cols-sm-4 row-cols-md-6 text-center align-middle">
+			<div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 text-center align-middle">
 				@foreach ($categorias as $categoria)
 				<div class="col border bg-white categ"><a href="#" class="text-decoration-none text-dark">{{$categoria->CATEGORIA_NOME}}</a></div>
 				@endforeach
@@ -100,7 +100,7 @@
 	  <div class="album py-3 bg-light">
 		<div class="container">
 		  <h1>Promoções</h1>
-		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
+		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-5">
 			@foreach ($produtos as $index => $produto)
 				@if ($index>=0 && $index<=4)
 					<div class="p-3 col">
