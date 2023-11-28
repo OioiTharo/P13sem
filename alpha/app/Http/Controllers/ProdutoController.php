@@ -11,18 +11,12 @@ use App\Http\Controllers\CategoriaController;
 class ProdutoController extends Controller
 {
 
+
     public function index()
     {
         $produtos = Produto::all();
         $categorias = Categoria::all();
         return view('produtos', ['produtos' =>  $produtos, 'categorias' => $categorias]);
-    }
-
-    public function filtrarPorCategoria($categoriaId)
-    {
-        $produtos = Produto::where('categoria_id', $categoriaId)->get();
-        
-        return view('partials.produtos', compact('produtos'));
     }
 
     public function create()

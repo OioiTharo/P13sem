@@ -27,22 +27,6 @@
 			.categ{ padding: 5px;}
 			select{border-radius: 8px; border: 1px solid black; padding: 2px;}
         </style>
-		<script>
-			function filtrarProdutos() {
-				var categoriaSelecionada = document.getElementById('categoriaFiltro').value;
-
-				var xhr = new XMLHttpRequest();
-				xhr.onreadystatechange = function() {
-					if (xhr.readyState == 4 && xhr.status == 200) {
-						document.getElementById('produtosContainer').innerHTML = xhr.responseText;
-					}
-				};
-
-				xhr.open('GET', '/produtos/filtrar/' + categoriaSelecionada, true);
-				xhr.send();
-			}
-		</script>
-
 
     </head>
 <body>
@@ -61,9 +45,10 @@
 				  <li><a href="{{ url('/logout') }}" class="nav-link px-2 text-dark">Sair</a></li>
 				</ul>
 
-				<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-					<input type="search" class="form-control form-control-dark" placeholder="Pesquisar...">
+				<form action="" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+					<input type="search" name="q" class="form-control form-control-dark" placeholder="Pesquisar...">
 				</form>
+
 
 				<div class="text-end">
 				  <a href="{{ url('/carrinho') }}" class="text-decoration-none text-dark "><i class="material-icons">shopping_cart</i></a>
@@ -76,8 +61,8 @@
 	<!-- produtos -->
 	<div class="album py-3 bg-light" id="app">
 		<div class="container">
-			<label for="categoriaFiltro">Filtrar por categoria:</label>
-			<select id="categoriaFiltro" onchange="filtrarProdutos()">
+			<label>Filtrar por categoria:</label>
+			<select>
 				<option value="">Todos</option>
 				@foreach ($categorias as $categoria)
 					<option value="{{ $categoria->CATEGORIA_ID }}">{{ $categoria->CATEGORIA_NOME }}</option>
