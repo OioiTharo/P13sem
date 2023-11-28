@@ -71,7 +71,7 @@
 			</p>
 		</div>
 		<div class="container">
-			<div id="produtosContainer" class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
+			<div id="produtosContainer" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-5">
 				@foreach ($produtos as $produto)
 					<div v-for="produto in produtosFiltrados" class="p-3 col">
 						<div class="card shadow-sm">
