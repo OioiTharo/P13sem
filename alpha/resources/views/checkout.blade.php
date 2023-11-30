@@ -156,7 +156,7 @@
 
             <div class="col-md-6">
               <label for="cc-number" class="form-label">Número do cartão</label>
-              <input type="text" class="form-control" id="cc-number" placeholder="" required>
+              <input type="number" maxLenght="16" class="form-control" id="cc-number" placeholder="" required>
               <div class="invalid-feedback">
                 Número  obrigatório
               </div>
@@ -164,7 +164,7 @@
 
             <div class="col-md-3">
               <label for="cc-expiration" class="form-label">Vencimento</label>
-              <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+              <input type="number" maxLenght="4" class="form-control" id="cc-expiration" placeholder="" required>
               <div class="invalid-feedback">
                 Vencimento obrigatório
               </div>
@@ -172,7 +172,7 @@
 
             <div class="col-md-3">
               <label for="cc-cvv" class="form-label">CVV</label>
-              <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+              <input type="number" maxLenght="3" class="form-control" id="cc-cvv" placeholder="" required>
               <div class="invalid-feedback">
                 Código de segurança obrigatório
               </div>
