@@ -98,6 +98,9 @@
 				<div class="col">
 					<p><strong>Data do pedido:</strong> <span id="data">{{ $pedido->PEDIDO_DATA }}</span></p>
 				</div>
+				<div class="col">
+					<p><strong>Status:</strong> <span>Pagamento em analise</span></p>
+				</div>
 			</div>
 			<hr>
 		@endforeach
