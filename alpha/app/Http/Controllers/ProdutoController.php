@@ -10,7 +10,14 @@ use App\Http\Controllers\CategoriaController;
 
 class ProdutoController extends Controller
 {
-
+    public function obterProdutosPorCategoria($categoriaId) {
+        // Obter produtos da categoria
+        $produtos = Produto::where('CATEGORIA_ID', $categoriaId)->get();
+        
+        $categorias = Categoria::all();
+        // Retornar a view parcial com os produtos filtrados
+        return view('partial.produtos', ['categorias' => $categorias])->with('produtos', $produtos);
+    }
 
     public function index()
     {

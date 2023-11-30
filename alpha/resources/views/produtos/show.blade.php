@@ -50,10 +50,6 @@
 				  <li><a href="{{ url('/logout') }}" class="nav-link px-2 text-dark">Sair</a></li>
 				</ul>
 
-				<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-					<input type="search" class="form-control form-control-dark" placeholder="Pesquisar...">
-				</form>
-
 				<div class="text-end">
 				  <a href="{{ url('/carrinho') }}" class="text-decoration-none text-dark "><i class="material-icons">shopping_cart</i></a>
 				  <a href="" class="text-decoration-none text-dark "><i class="material-icons">accessibility</i></a>
@@ -85,7 +81,7 @@
 			</div>			
 			<div class="col descricaoProd">
 				<p class="text-justify">{{$produto->PRODUTO_DESC}}</p>
-				<h3 class="font-weight-bold preco">{{$produto->PRODUTO_PRECO}}</h3>
+				<h3 class="font-weight-bold preco">R$ {{$produto->PRODUTO_PRECO}}</h3>
                 <form method="POST" action="{{route('carrinho.store')}}">
 					@csrf
                     <input type="hidden" name="PRODUTO_ID" value="{{$produto->PRODUTO_ID}}">

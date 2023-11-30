@@ -44,11 +44,6 @@
 				  <li><a href="{{ url('/logout') }}" class="nav-link px-2 text-dark">Sair</a></li>
 				</ul>
 
-				<form action="" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-					<input type="search" name="q" class="form-control form-control-dark" placeholder="Pesquisar...">
-				</form>
-
-
 				<div class="text-end">
 				  <a href="{{ url('/carrinho') }}" class="text-decoration-none text-dark "><i class="material-icons">shopping_cart</i></a>
 				  <a href="" class="text-decoration-none text-dark "><i class="material-icons">accessibility</i></a>
@@ -121,11 +116,11 @@
 	<!-- banners -->
 	<div class="py-3 bg-light">
 		<div class="container">
-			<div class="row row-cols-sm-1 row-cols-md-2">
-				<div class="col-6">
+			<div class="row row-cols-sm-1 row-cols-md-1 row-cols-lg-2  ">
+				<div class="col-6 p-2">
                     <img src="./images/1.png" width="100%" height="200px">
 				</div>
-				<div class="col-6">
+				<div class="col-6 p-2">
                     <img src="./images/2.png" width="100%" height="200px">
 				</div>
 			</div>
@@ -135,7 +130,7 @@
 	<div class="album py-3 bg-light">
 		<div class="container">
 		  <h1>Mais pesquisados</h1>
-		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
+		  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-5">
 			@foreach ($produtos as $index => $produto)
 				@if ($index>=5 && $index<=9)
 					<div class="p-3 col">

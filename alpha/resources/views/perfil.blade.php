@@ -46,11 +46,7 @@
 				  <li><a href="#" class="nav-link px-2 text-dark">Sac</a></li>
 				  <li><a href="{{ url('/logout') }}" class="nav-link px-2 text-dark">Sair</a></li>
 				</ul>
-
-				<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-					<input type="search" class="form-control form-control-dark" placeholder="Pesquisar...">
-				</form>
-
+				
 				<div class="text-end">
 				  <a href="{{ url('/carrinho') }}" class="text-decoration-none text-dark "><i class="material-icons">shopping_cart</i></a>
 				  <a href="" class="text-decoration-none text-dark "><i class="material-icons">accessibility</i></a>

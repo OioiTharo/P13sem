@@ -16,10 +16,11 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!--Bootstrap: -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
- 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
- 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<style>
             body{font-family: 'Electrolize', sans-serif; margin: 0;}
 			.material-icons{width: 40px}
@@ -27,7 +28,36 @@
 			.categ{ padding: 5px;}
 			select{border-radius: 8px; border: 1px solid black; padding: 2px;}
         </style>
+	
+		<script>
 
+			$(document).ready(function() {
+				// Função para carregar produtos com base na categoria selecionada
+				function carregarProdutosPorCategoria() {
+					var categoriaId = $('#categoria').val();
+					
+					$.ajax({
+						url: '/obter-produtos-por-categoria/' + categoriaId,
+						type: 'GET',
+						success: function(data) {
+							$('#produtosContainer').html(data);
+						},
+						error: function(error) {
+							console.error('Erro ao obter produtos por categoria:', error);
+						}
+					});
+				}
+
+				// Associar a função de carregamento de produtos ao evento de clique no botão de filtro
+				$('#filtrarProdutos').on('click', function() {
+					carregarProdutosPorCategoria();
+				});
+
+				// Carregar os produtos da categoria padrão ao carregar a página
+				carregarProdutosPorCategoria();
+			});
+
+		</script>
     </head>
 <body>
     <!-- header -->
@@ -45,10 +75,12 @@
 				  <li><a href="{{ url('/logout') }}" class="nav-link px-2 text-dark">Sair</a></li>
 				</ul>
 
-				<form action="" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-					<input type="search" name="q" class="form-control form-control-dark" placeholder="Pesquisar...">
+				<form id="formPesquisa" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+					<div class="input-group">
+						<input type="search" id="pesquisa" name="pesquisa" class="form-control" placeholder="Nome do produto...">
+						<button type="button" class="btn btn-dark" id="btnPesquisar">Pesquisar</button>
+					</div>
 				</form>
-
 
 				<div class="text-end">
 				  <a href="{{ url('/carrinho') }}" class="text-decoration-none text-dark "><i class="material-icons">shopping_cart</i></a>
@@ -61,14 +93,17 @@
 	<!-- produtos -->
 	<div class="album py-3 bg-light" id="app">
 		<div class="container">
-			<label>Filtrar por categoria:</label>
-			<select>
-				<option value="">Todos</option>
-				@foreach ($categorias as $categoria)
-					<option value="{{ $categoria->CATEGORIA_ID }}">{{ $categoria->CATEGORIA_NOME }}</option>
-				@endforeach
-			</select>
-			</p>
+			<form id="filtroCategoriasForm">
+				<label for="categoria">Categoria:</label>
+				<select name="categoria" id="categoria">
+					<!-- Opções de categorias vêm do seu banco de dados -->
+					<option value="" selected>Todos</option>
+					@foreach ($categorias as $categoria)
+						<option value="{{ $categoria->CATEGORIA_ID}}">{{ $categoria->CATEGORIA_NOME }}</option>
+					@endforeach
+				</select>
+				<button class="btn btn-dark p-1 " type="button" id="filtrarProdutos">Filtrar</button>
+			</form>
 		</div>
 		<div class="container">
 			<div id="produtosContainer" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-5">
@@ -82,7 +117,7 @@
 							@endif
 							<div class="card-body">
 								<a class="card-text" href="{{route('produtos.show', $produto->PRODUTO_ID)}}">{{$produto->PRODUTO_NOME}}</a>
-								<p class="card-text"><strong>{{$produto->PRODUTO_PRECO}}</strong></p>
+								<p class="card-text"><strong>R$ {{$produto->PRODUTO_PRECO}}</strong></p>
 							</div>
 						</div>
 					</div>
