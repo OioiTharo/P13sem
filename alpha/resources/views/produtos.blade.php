@@ -75,11 +75,9 @@
 				  <li><a href="{{ url('/logout') }}" class="nav-link px-2 text-dark">Sair</a></li>
 				</ul>
 
-				<form id="formPesquisa" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-					<div class="input-group">
-						<input type="search" id="pesquisa" name="pesquisa" class="form-control" placeholder="Nome do produto...">
-						<button type="button" class="btn btn-dark" id="btnPesquisar">Pesquisar</button>
-					</div>
+				
+				<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+					<input type="search"  class="form-control form-control-dark" placeholder="Pesquisar...">
 				</form>
 
 				<div class="text-end">

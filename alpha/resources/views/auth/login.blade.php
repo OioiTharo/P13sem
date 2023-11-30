@@ -37,7 +37,7 @@
 				  <li><a href="{{ url('/produtos') }}" class="nav-link px-2 text-dark">Produtos</a></li>
 				  <li><a href="#" class="nav-link px-2 text-dark">Sac</a></li>
 				</ul>
-
+				
 				<div class="text-end">
 				  <a href="{{ url('/carrinho') }}" class="text-decoration-none text-dark "><i class="material-icons">shopping_cart</i></a>
 				  <a href="" class="text-decoration-none text-dark "><i class="material-icons">accessibility</i></a>
