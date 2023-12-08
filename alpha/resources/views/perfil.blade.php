@@ -141,6 +141,7 @@
 					<div class="pt-4 form-row">
 						<div class="col">
 							<input type="text" class="form-control" placeholder="CEP" id="cep" name="ENDERECO_CEP">
+							<small class="text-muted">* Apenas números</small>
 						</div>
 						<div class="col">
 							<input type="text" class="form-control" placeholder="Cidade" id="cidade" name="ENDERECO_CIDADE">

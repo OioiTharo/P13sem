@@ -71,7 +71,12 @@
 			<div class="col">
 				<table class="table table-borderless lowprod">
                     <tr>
-                        <td rowspan="3"><img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" width="100%" height="300"></td>
+                        <td rowspan="3">@if($produto->ProdutoImagens->count() > 0)
+							<img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}"width="100%" height="300">
+							@else
+							<img src="../images/carrinho.jpg" width="100%" height="300">
+							@endif
+						</td>
                         <td>
                             <svg width="80px" height="80px"></svg>
                         </td>
@@ -90,7 +95,7 @@
                 <form method="POST" action="{{route('carrinho.store')}}">
 					@csrf
                     <input type="hidden" name="PRODUTO_ID" value="{{$produto->PRODUTO_ID}}">
-                    QTD: <input class="quant" name="ITEM_QTD" value="{{$produto->ITEM_QTD}}" type="number" min="0">
+                    QTD: <input class="quant" min="1" name="ITEM_QTD" value="{{$produto->ITEM_QTD}}" type="number" min="0">
                     <button type="submit" class="btn btn-outline-dark">Comprar</button>
                 </form>
 			</div>
